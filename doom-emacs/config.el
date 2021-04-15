@@ -31,6 +31,9 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 (setq org-roam-directory "~/org/")
+(add-hook 'after-init-hook 'org-roam-mode)
+(bind-key [f8] 'org-roam-find-file)
+(setq org-roam-db-update-method 'immediate)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
