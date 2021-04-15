@@ -55,3 +55,6 @@
 ;; they are implemented.
 
 (setq projectile-project-search-path '("~/code/public/" "~/code/local/"))
+
+;; disable HTML export syntax highlighting
+(setq org-html-htmlize-output-type 'nil)
