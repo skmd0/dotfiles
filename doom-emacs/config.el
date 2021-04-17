@@ -61,3 +61,12 @@
 
 ;; disable HTML export syntax highlighting
 (setq org-html-htmlize-output-type 'nil)
+
+;; org-drill
+(use-package! org-drill
+  :after org
+  :config
+  (add-to-list 'org-capture-templates
+               `("d" "Drill" entry
+                 (file ,(concat org-directory "drill.org"))
+                 "* %^{Heading} :drill:\n\n%^{Question}\n\n** Answer\n\n%^{Answer}")))
