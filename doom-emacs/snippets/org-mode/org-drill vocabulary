@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: org-drill vocabulary
+# key: drill-vocab
+# --
+* Definition :drill:
+  ${1:word to learn} (${2:type})
+  ** Answer
+  ${3:word definition}
