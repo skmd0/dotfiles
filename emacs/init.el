@@ -44,9 +44,12 @@
 
 ;; disable line numbers for some modes
 (dolist (mode '(org-mode-hook
-		term-mode-hook
-		eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-number-mode 0))))
+				term-mode-hook
+				shell-mode-hook
+				eshell-mode-hook
+				treemacs-mode-hook
+				))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; initialize package sources
 (require 'package)
@@ -76,8 +79,8 @@
          ("C-l" . ivy-alt-done)
          ("C-j" . ivy-next-line)
          ("C-k" . ivy-previous-line)
-	 ("C-y" . ivy-kill-ring-save)
-	 ("C-p" . yank)
+		 ("C-y" . ivy-kill-ring-save)
+		 ("C-p" . yank)
          :map ivy-switch-buffer-map
          ("C-k" . ivy-previous-line)
          ("C-l" . ivy-done)
@@ -197,6 +200,7 @@
 	"lr" '(lsp-find-references :which-key "LSP find references")
 	"ld" '(lsp-find-definition :which-key "LSP find definition")
 	"lc" '(lsp-rename :which-key "LSP rename")
+	"lt" '(lsp-treemacs-symbols :which-key "LSP types in side-menu")
 	))
 
 (general-define-key
@@ -238,7 +242,12 @@
   (lsp-enable-which-key-integration t))
 
 ;; additional LSP UI improvements
-(use-package lsp-ui)
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode))
+
+;; side-menu to show types
+(use-package lsp-treemacs
+  :after lsp)
 
 ;; auto-completion while you type
 (use-package company
@@ -276,7 +285,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company go-mode yasnippet company-mode lsp-ui lsp-mode evil-leader evil-magit magit counsel-projectile projectile evil-snipe good-scroll evil-collection evil general counsel ivy-rich which-key rainbow-delimiters swiper use-package spinner org-roam markdown-mode lv ivy ht doom-themes doom-modeline)))
+   '(lsp-treemacs company go-mode yasnippet company-mode lsp-ui lsp-mode evil-leader evil-magit magit counsel-projectile projectile evil-snipe good-scroll evil-collection evil general counsel ivy-rich which-key rainbow-delimiters swiper use-package spinner org-roam markdown-mode lv ivy ht doom-themes doom-modeline)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
