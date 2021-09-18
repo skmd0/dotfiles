@@ -224,6 +224,37 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
+;; Language Server Protocol for ide-like features
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (lsp-enable-which-key-integration t))
+
+;; additional LSP UI improvements
+(use-package lsp-ui)
+
+;; auto-completion while you type
+(use-package company)
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 1)
+
+;; code snippet system
+(use-package yasnippet)
+
+;; Go programming language intergration
+(use-package go-mode)
+;; add hooks to format code and organize imports on save
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+;; add hooks to enable LSP and yas snippets while working with Go code
+(add-hook 'go-mode-hook #'lsp-deferred)
+(add-hook 'go-mode-hook #'yas-minor-mode)
+
 ;;;;;;; auto-GENERATED ;;;;;;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -231,7 +262,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-leader evil-magit magit counsel-projectile projectile evil-snipe good-scroll evil-collection evil general counsel ivy-rich which-key rainbow-delimiters swiper use-package spinner org-roam markdown-mode lv ivy ht doom-themes doom-modeline)))
+   '(company go-mode yasnippet company-mode lsp-ui lsp-mode evil-leader evil-magit magit counsel-projectile projectile evil-snipe good-scroll evil-collection evil general counsel ivy-rich which-key rainbow-delimiters swiper use-package spinner org-roam markdown-mode lv ivy ht doom-themes doom-modeline)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
