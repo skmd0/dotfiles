@@ -193,7 +193,11 @@
     "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
     "SPC" '(projectile-find-file :which-key "find file in project - projectile")
     "gg" '(magit-status :which-key "git status page - magit")
-    "dd" '(dired :which-key "dired")))
+    "dd" '(dired :which-key "dired")
+	"lr" '(lsp-find-references :which-key "LSP find references")
+	"ld" '(lsp-find-definition :which-key "LSP find definition")
+	"lc" '(lsp-rename :which-key "LSP rename")
+	))
 
 (general-define-key
  "M-k" 'keyboard-escape-quit
@@ -230,8 +234,6 @@
 ;; Language Server Protocol for ide-like features
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
   :config
   (lsp-enable-which-key-integration t))
 
