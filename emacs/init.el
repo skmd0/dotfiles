@@ -16,6 +16,9 @@
 ;; disable tooltips
 (tooltip-mode -1)
 
+;; set tab with to 4 spaces
+(setq-default tab-width 4)
+
 ;; change line height by adding spacing to it
 ;;(setq-default line-spacing 0)
 
