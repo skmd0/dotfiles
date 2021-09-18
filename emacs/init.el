@@ -264,7 +264,7 @@
   (company-minimum-prefix-length 1)
   (company-idle-delay 0))
 
-;; better company UI
+;; better company UI - commented for maybe future use
 ;;(use-package company-box
 ;;  :hook (company-mode . company-box-mode))
 
