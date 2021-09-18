@@ -251,6 +251,10 @@
   (company-minimum-prefix-length 1)
   (company-idle-delay 0))
 
+;; better company UI
+;;(use-package company-box
+;;  :hook (company-mode . company-box-mode))
+
 ;; code snippet system
 (use-package yasnippet)
 
