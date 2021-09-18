@@ -201,6 +201,7 @@
 	"ld" '(lsp-find-definition :which-key "LSP find definition")
 	"lc" '(lsp-rename :which-key "LSP rename")
 	"lt" '(lsp-treemacs-symbols :which-key "LSP types in side-menu")
+	"ll" '(lsp-ivy-workspace-symbol :which-key "LSP ivy jump to symbol by name")
 	))
 
 (general-define-key
@@ -249,6 +250,9 @@
 (use-package lsp-treemacs
   :after lsp)
 
+;; LSP ivy - useful for navigating to function/type that you know by name
+(use-package lsp-ivy)
+
 ;; auto-completion while you type
 (use-package company
   :after lsp-mode
@@ -285,7 +289,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(lsp-treemacs company go-mode yasnippet company-mode lsp-ui lsp-mode evil-leader evil-magit magit counsel-projectile projectile evil-snipe good-scroll evil-collection evil general counsel ivy-rich which-key rainbow-delimiters swiper use-package spinner org-roam markdown-mode lv ivy ht doom-themes doom-modeline)))
+   '(lsp-ivy lsp-treemacs company go-mode yasnippet company-mode lsp-ui lsp-mode evil-leader evil-magit magit counsel-projectile projectile evil-snipe good-scroll evil-collection evil general counsel ivy-rich which-key rainbow-delimiters swiper use-package spinner org-roam markdown-mode lv ivy ht doom-themes doom-modeline)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
