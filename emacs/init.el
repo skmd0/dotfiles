@@ -102,7 +102,7 @@
   :init (doom-modeline-mode 1)
   :custom (doom-modeline-height 10))
 
-;; org-mode configs
+;; org-mode
 (use-package org)
 
 ;; org-roam settings
