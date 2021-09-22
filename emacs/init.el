@@ -47,8 +47,7 @@
 (global-display-line-numbers-mode t)
 
 ;; disable line numbers for some modes
-(dolist (mode '(org-mode-hook
-				term-mode-hook
+(dolist (mode '(term-mode-hook
 				shell-mode-hook
 				eshell-mode-hook
 				treemacs-mode-hook
