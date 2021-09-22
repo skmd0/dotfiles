@@ -211,6 +211,8 @@
 (general-define-key
  "M-k" 'keyboard-escape-quit
  "M-;" 'counsel-M-x
+ "M-o" 'org-open-at-point
+ "M-b" 'evil-jump-backward
  :keymaps 'org-mode-map
  "C-h" 'org-shiftmetaleft
  "C-j" 'org-move-subtree-down
