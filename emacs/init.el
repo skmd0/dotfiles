@@ -286,6 +286,12 @@
 (add-hook 'go-mode-hook #'lsp-deferred)
 (add-hook 'go-mode-hook #'yas-minor-mode)
 
+;; built-in terminal emulator configuration
+(use-package term
+  :config
+  (setq explicit-shell-file-name "bash")
+  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *"))
+
 ;;;;;;; auto-GENERATED ;;;;;;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
