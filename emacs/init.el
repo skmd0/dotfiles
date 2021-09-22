@@ -16,6 +16,10 @@
 ;; disable tooltips
 (tooltip-mode -1)
 
+;; enable line word wrapping
+;; if line is too long wrap it into next line
+(global-visual-line-mode t)
+
 ;; set tab with to 4 spaces
 (setq-default tab-width 4)
 
