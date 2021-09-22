@@ -29,9 +29,6 @@
 ;; add window padding left and right
 ;;(set-fringe-mode 10)
 
-;; disable org-roam v2 migration warning at startup
-(setq org-roam-v2-ack t)
-
 ;; set font
 (set-frame-font "Hack 12" nil t)
 
@@ -106,8 +103,12 @@
 (use-package org)
 
 ;; org-roam settings
-(setq org-roam-directory "~/org/org-roam")
-(use-package org-roam)
+(use-package org-roam
+  :init
+  ;; disable org-roam v2 migration warning at startup
+  (setq org-roam-v2-ack t)
+  :custom
+  (setq org-roam-directory "~/org-roam"))
 
 ;; doom-themes color schemes
 (use-package doom-themes
