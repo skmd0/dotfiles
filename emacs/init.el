@@ -138,7 +138,7 @@
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
-  :config (setq which-key-idle-delay 0))
+  :config (setq which-key-idle-delay 1.0))
 
 ;; unmap kill-sentence function
 (global-set-key (kbd "M-k") nil)
