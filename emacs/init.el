@@ -45,6 +45,7 @@
 
 ;; disable line numbers for some modes
 (dolist (mode '(term-mode-hook
+				vterm-mode-hook
 				shell-mode-hook
 				eshell-mode-hook
 				treemacs-mode-hook
@@ -225,7 +226,7 @@
 ;; for some reason I can't override emacs default keybind with general
 ;; that's why I am overriding it here again until I find correct solution
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
-(global-set-key (kbd "M-t") 'term)
+(global-set-key (kbd "M-t") 'vterm-other-window)
 
 ;; project management package
 (use-package projectile
@@ -299,6 +300,12 @@
   (setq explicit-shell-file-name "bash")
   (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *"))
 
+;; better terminal emulator
+(use-package vterm
+  :commands vterm
+  :config
+  (setq vterm-max-scrollback 10000))
+
 ;;;;;;; auto-GENERATED ;;;;;;;
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -306,7 +313,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(lsp-ivy lsp-treemacs company go-mode yasnippet company-mode lsp-ui lsp-mode evil-leader evil-magit magit counsel-projectile projectile evil-snipe good-scroll evil-collection evil general counsel ivy-rich which-key rainbow-delimiters swiper use-package spinner org-roam markdown-mode lv ivy ht doom-themes doom-modeline)))
+   '(vterm lsp-ivy lsp-treemacs company go-mode yasnippet company-mode lsp-ui lsp-mode evil-leader evil-magit magit counsel-projectile projectile evil-snipe good-scroll evil-collection evil general counsel ivy-rich which-key rainbow-delimiters swiper use-package spinner org-roam markdown-mode lv ivy ht doom-themes doom-modeline)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
