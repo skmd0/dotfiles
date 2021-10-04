@@ -74,7 +74,7 @@
 (use-package swiper)
 (use-package ivy
   :diminish
-  :bind (("M-s" . swiper)
+  :bind (("M-s" . swiper-isearch)
          :map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)	
          ("C-l" . ivy-alt-done)
