@@ -252,7 +252,8 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :config
-  (lsp-enable-which-key-integration t))
+  (lsp-enable-which-key-integration t)
+  (setq lsp-headerline-breadcrumb-enable nil))
 
 ;; additional LSP UI improvements
 (use-package lsp-ui
