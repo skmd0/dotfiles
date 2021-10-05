@@ -218,6 +218,7 @@
 	"lc" '(lsp-rename :which-key "LSP rename")
 	"lt" '(show-side-menu-treemacs :which-key "open treemacs sidebar for project")
 	"ll" '(lsp-ivy-workspace-symbol :which-key "LSP ivy jump to symbol by name")
+	"bd" '(dired-jump :which-key "open dired from current buffer")
 	))
 
 ;; project management package
@@ -337,6 +338,31 @@
 ;; right now I am using hardcoded path because I am too smoothbrain to know how to use symbolic links
 (setq custom-file "/home/skmd/code/dotfiles/emacs/custom.el")
 (load custom-file)
+
+;; configuration for built-in directory manager
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :custom
+  ((dired-listing-switches "-agho --group-directories-first"))
+  :config
+  (setq delete-by-moving-to-trash t)
+  (evil-collection-define-key 'normal 'dired-mode-map
+	"h" 'dired-single-up-directory
+	"l" 'dired-single-buffer))
+
+;; just use 1 dired instance instead of having multiple opened for each directory
+(use-package dired-single)
+;; dired-open is another useful emacs package to open external applications by specific file extension
+
+;; package to handle showing/hiding of dotfiles
+(use-package dired-hide-dotfiles
+  ;; hide dotfiles by default
+  :hook (dired-mode . dired-hide-dotfiles-mode)
+  :config
+  ;; set H keybind to toggle visibility
+  (evil-collection-define-key 'normal 'dired-mode-map
+	"H" 'dired-hide-dotfiles-mode))
 
 (general-define-key
  "M-k" 'keyboard-escape-quit
