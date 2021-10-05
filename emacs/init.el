@@ -325,13 +325,13 @@
   ("M-]" . centaur-tabs-forward))
 
 ;; ivy in the center of the screen
-(use-package ivy-posframe)
+;;(use-package ivy-posframe)
 ;; display at `ivy-posframe-style'
-(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-(ivy-posframe-mode 1)
-(setq ivy-posframe-parameters
-      '((left-fringe . 5)
-        (right-fringe . 5)))
+;;(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+;;(ivy-posframe-mode 1)
+;;(setq ivy-posframe-parameters
+;;      '((left-fringe . 5)
+;;        (right-fringe . 5)))
 
 ;; Emacs pls don't shit auto-generated stuff in my init.el
 ;;(setq custom-file (concat user-emacs-directory "custom.el"))
