@@ -171,6 +171,9 @@
   :config
   (evil-snipe-mode +1)
   (evil-snipe-override-mode +1))
+;; disable evil snipe in dired mode so symbolic link shortcut (S) works
+(add-hook 'dired-mode-hook #'turn-off-evil-snipe-mode)
+(add-hook 'dired-mode-hook #'turn-off-evil-snipe-override-mode)
 
 (defun comment-or-uncomment-region-or-line ()
     "Comments or uncomments the region or the current line if there's no active region."
