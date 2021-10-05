@@ -290,6 +290,17 @@
   :config
   (setq vterm-max-scrollback 10000))
 
+;; show fancy tabs from opened buffers
+(use-package centaur-tabs
+  :demand
+  :config
+  (setq centaur-tabs-style "bar"
+		centaur-tabs-height 32
+		centaur-tabs-cycle-scope 'tabs)
+  (centaur-tabs-mode t)
+  :bind
+  ("M-[" . centaur-tabs-backward)
+  ("M-]" . centaur-tabs-forward))
 ;; Emacs pls don't shit auto-generated stuff in my init.el
 ;;(setq custom-file (concat user-emacs-directory "custom.el"))
 (setq custom-file "/home/skmd/code/dotfiles/emacs/custom.el")
@@ -299,9 +310,7 @@
  "M-k" 'keyboard-escape-quit
  "M-;" 'counsel-M-x
  "M-o" 'org-open-at-point
- "M-b" 'evil-jump-backward
- "M-[" 'centaur-tabs-backward
- "M-]" 'centaur-tabs-forward)
+ "M-b" 'evil-jump-backward)
 
 (general-define-key
  :keymaps 'org-mode-map
