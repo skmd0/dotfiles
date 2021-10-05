@@ -181,6 +181,12 @@
             (setq beg (line-beginning-position) end (line-end-position)))
         (comment-or-uncomment-region beg end)))
 
+(defun show-side-menu-treemacs ()
+  "custom function to open both treemacs for files and symbols"
+  (interactive)
+  (treemacs)
+  (lsp-treemacs-symbols))
+
 ;;;;;;;;; keybinds ;;;;;;;;;;
 (use-package general
   :config
@@ -207,7 +213,7 @@
 	"lr" '(lsp-find-references :which-key "LSP find references")
 	"ld" '(lsp-find-definition :which-key "LSP find definition")
 	"lc" '(lsp-rename :which-key "LSP rename")
-	"lt" '(lsp-treemacs-symbols :which-key "LSP types in side-menu")
+	"lt" '(show-side-menu-treemacs :which-key "open treemacs sidebar for project")
 	"ll" '(lsp-ivy-workspace-symbol :which-key "LSP ivy jump to symbol by name")
 	))
 
@@ -241,6 +247,18 @@
 ;; additional LSP UI improvements
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode))
+
+(use-package treemacs
+  :defer t
+  :config
+  (setq treemacs-indentation 2
+		treemacs-no-png-images t
+		treemacs-width 35
+		treemacs-space-between-root-nodes nil
+		treemacs-show-cursor nil))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile))
 
 ;; side-menu to show types
 (use-package lsp-treemacs
