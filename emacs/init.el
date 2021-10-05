@@ -1,14 +1,13 @@
 ;; change the amount of garbage collection to speed up startup time
 (setq gc-cons-threshold (* 50 1000 1000))
 
-(defun skmd/display-startup-time ()
-  (message "Emacs loaded in %s with %d garbage collections."
-		   (format "%.2f seconds"
-				   (float-time
-					(time-subtract after-init-time before-init-time)))
-		   gcs-done))
-
-(add-hook 'emacs-startup-hook #'skmd/display-startup-time)
+;; (defun skmd/display-startup-time ()
+;;   (message "Emacs loaded in %s with %d garbage collections."
+;; 		   (format "%.2f seconds"
+;; 				   (float-time
+;; 					(time-subtract after-init-time before-init-time)))
+;; 		   gcs-done))
+;; (add-hook 'emacs-startup-hook #'skmd/display-startup-time)
 
 ;; disable startup message
 (setq inhibit-startup-message t)
