@@ -1,3 +1,15 @@
+;; change the amount of garbage collection to speed up startup time
+(setq gc-cons-threshold (* 50 1000 1000))
+
+(defun skmd/display-startup-time ()
+  (message "Emacs loaded in %s with %d garbage collections."
+		   (format "%.2f seconds"
+				   (float-time
+					(time-subtract after-init-time before-init-time)))
+		   gcs-done))
+
+(add-hook 'emacs-startup-hook #'skmd/display-startup-time)
+
 ;; disable startup message
 (setq inhibit-startup-message t)
 
@@ -52,6 +64,12 @@
 				))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; Emacs pls don't shit auto-generated stuff in my init.el
+;;(setq custom-file (concat user-emacs-directory "custom.el"))
+;; right now I am using hardcoded path because I am too smoothbrain to know how to use symbolic links
+(setq custom-file "/home/skmd/code/dotfiles/emacs/custom.el")
+(load custom-file)
+
 ;; initialize package sources
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
@@ -65,13 +83,10 @@
 (require 'use-package)
 ;; so you don't have to specify :ensure t on every plugin
 (setq use-package-always-ensure t)
+;; useful for debugging startup time
+;;(setq use-package-verbose t)
 
 ;; ivy - suite of packages to show options in a list that you can filter through
-(use-package counsel
-  :bind (("M-;" . counsel-M-x)
-	 :map minibuffer-local-map
-	 ("M-r" . 'counsel-minibuffer-history)))
-(use-package swiper)
 (use-package ivy
   :diminish
   :bind (("M-s" . swiper-isearch)
@@ -89,11 +104,20 @@
          :map ivy-reverse-i-search-map
          ("C-k" . ivy-previous-line)
          ("C-d" . ivy-reverse-i-search-kill))
-  :config (ivy-mode 1))
+  :config
+  (ivy-mode 1))
 
 ;; ivy-rich adds description and keybinds to ivy list items
 (use-package ivy-rich
+  :after ivy
   :init (ivy-rich-mode 1))
+
+(use-package counsel
+  :bind (("M-;" . counsel-M-x)
+	 :map minibuffer-local-map
+	 ("M-r" . 'counsel-minibuffer-history))
+  :config
+  (counsel-mode 1))
 
 ;; doom modeline
 (use-package doom-modeline
@@ -101,10 +125,12 @@
   :custom (doom-modeline-height 10))
 
 ;; org-mode
-(use-package org)
+(use-package org
+  :commands (org-capture org-agenda))
 
 ;; org-roam settings
 (use-package org-roam
+  :after org
   :init
   ;; disable org-roam v2 migration warning at startup
   (setq org-roam-v2-ack t)
@@ -123,8 +149,6 @@
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
   ;; or for treemacs users
   (setq doom-themes-treemacs-theme "doom-one") ; use "doom-colors" for less minimal icon theme
   (doom-themes-treemacs-config)
@@ -137,13 +161,16 @@
 
 ;; which-key shows the keybinding combo help in a minibuffer
 (use-package which-key
-  :init (which-key-mode)
+  :defer 0
   :diminish which-key-mode
-  :config (setq which-key-idle-delay 0.5))
+  :config
+  (which-key-mode)
+  (setq which-key-idle-delay 0.5))
 
 ;; unmap kill-sentence function
 (global-set-key (kbd "M-k") nil)
 
+;; use VI modal editing
 (use-package evil
   :init
   (setq evil-want-integration t)
@@ -168,6 +195,7 @@
   (evil-collection-init))
 
 (use-package evil-snipe
+  :after evil
   :config
   (evil-snipe-mode +1)
   (evil-snipe-override-mode +1))
@@ -190,8 +218,9 @@
   (treemacs)
   (lsp-treemacs-symbols))
 
-;;;;;;;;; keybinds ;;;;;;;;;;
+;; package to setup keybinds in a nice way
 (use-package general
+  :after evil
   :config
   (general-create-definer skmd/leader-keys
     :keymaps '(normal insert visual emacs)
@@ -234,10 +263,12 @@
 
 ;; completion functionality for projectile
 (use-package counsel-projectile
+  :after projectile
   :config (counsel-projectile-mode))
 
 ;; git front-end
 (use-package magit
+  :commands magit-status
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
@@ -266,10 +297,11 @@
 
 ;; side-menu to show types
 (use-package lsp-treemacs
-  :after lsp)
+  :after (lsp treemacs))
 
 ;; LSP ivy - useful for navigating to function/type that you know by name
-(use-package lsp-ivy)
+(use-package lsp-ivy
+  :after lsp)
 
 ;; auto-completion while you type
 (use-package company
@@ -290,7 +322,9 @@
 (use-package yasnippet)
 
 ;; Go programming language intergration
-(use-package go-mode)
+(use-package go-mode
+  :mode "\\.go\\'"
+  :hook (go-mode . lsp-deferred))
 ;; add hooks to format code and organize imports on save
 (defun lsp-go-install-save-hooks ()
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
@@ -302,6 +336,7 @@
 
 ;; built-in terminal emulator configuration
 (use-package term
+  :commands term
   :config
   (setq explicit-shell-file-name "bash")
   (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *"))
@@ -324,21 +359,6 @@
   ("M-[" . centaur-tabs-backward)
   ("M-]" . centaur-tabs-forward))
 
-;; ivy in the center of the screen
-;;(use-package ivy-posframe)
-;; display at `ivy-posframe-style'
-;;(setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-;;(ivy-posframe-mode 1)
-;;(setq ivy-posframe-parameters
-;;      '((left-fringe . 5)
-;;        (right-fringe . 5)))
-
-;; Emacs pls don't shit auto-generated stuff in my init.el
-;;(setq custom-file (concat user-emacs-directory "custom.el"))
-;; right now I am using hardcoded path because I am too smoothbrain to know how to use symbolic links
-(setq custom-file "/home/skmd/code/dotfiles/emacs/custom.el")
-(load custom-file)
-
 ;; configuration for built-in directory manager
 (use-package dired
   :ensure nil
@@ -352,7 +372,8 @@
 	"l" 'dired-single-buffer))
 
 ;; just use 1 dired instance instead of having multiple opened for each directory
-(use-package dired-single)
+(use-package dired-single
+  :after dired)
 ;; dired-open is another useful emacs package to open external applications by specific file extension
 
 ;; package to handle showing/hiding of dotfiles
@@ -382,3 +403,6 @@
 ;; that's why I am overriding it here again until I find correct solution
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "M-t") 'vterm-other-window)
+
+;; change the garbage collection back to normal after everything gets loaded
+(setq gc-cons-threshold (* 2 1000 1000))
