@@ -211,23 +211,6 @@
 	"ll" '(lsp-ivy-workspace-symbol :which-key "LSP ivy jump to symbol by name")
 	))
 
-(general-define-key
- "M-k" 'keyboard-escape-quit
- "M-;" 'counsel-M-x
- "M-o" 'org-open-at-point
- "M-b" 'evil-jump-backward
- :keymaps 'org-mode-map
- "C-h" 'org-shiftmetaleft
- "C-j" 'org-move-subtree-down
- "C-k" 'org-move-subtree-up
- "C-l" 'org-shiftmetaright
- "C-~" 'kill-sentence)
-
-;; for some reason I can't override emacs default keybind with general
-;; that's why I am overriding it here again until I find correct solution
-(global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
-(global-set-key (kbd "M-t") 'vterm-other-window)
-
 ;; project management package
 (use-package projectile
   :diminish projectile-mode
@@ -311,3 +294,24 @@
 ;;(setq custom-file (concat user-emacs-directory "custom.el"))
 (setq custom-file "/home/skmd/code/dotfiles/emacs/custom.el")
 (load custom-file)
+
+(general-define-key
+ "M-k" 'keyboard-escape-quit
+ "M-;" 'counsel-M-x
+ "M-o" 'org-open-at-point
+ "M-b" 'evil-jump-backward
+ "M-[" 'centaur-tabs-backward
+ "M-]" 'centaur-tabs-forward)
+
+(general-define-key
+ :keymaps 'org-mode-map
+ "C-h" 'org-shiftmetaleft
+ "C-j" 'org-move-subtree-down
+ "C-k" 'org-move-subtree-up
+ "C-l" 'org-shiftmetaright
+ "C-~" 'kill-sentence)
+
+;; for some reason I can't override emacs default keybind with general
+;; that's why I am overriding it here again until I find correct solution
+(global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "M-t") 'vterm-other-window)
