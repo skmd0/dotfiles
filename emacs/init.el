@@ -143,9 +143,6 @@
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-one") ; use "doom-colors" for less minimal icon theme
-  (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
@@ -206,12 +203,6 @@
             (setq beg (line-beginning-position) end (line-end-position)))
         (comment-or-uncomment-region beg end)))
 
-(defun show-side-menu-treemacs ()
-  "custom function to open both treemacs for files and symbols"
-  (interactive)
-  (treemacs)
-  (lsp-treemacs-symbols))
-
 ;; package to setup keybinds in a nice way
 (use-package general
   :after evil
@@ -239,7 +230,7 @@
 	"lr" '(lsp-find-references :which-key "LSP find references")
 	"ld" '(lsp-find-definition :which-key "LSP find definition")
 	"lc" '(lsp-rename :which-key "LSP rename")
-	"lt" '(show-side-menu-treemacs :which-key "open treemacs sidebar for project")
+	"lt" '(dired-sidebar-toggle-sidebar :which-key "toggle project sidebar")
 	"ll" '(lsp-ivy-workspace-symbol :which-key "LSP ivy jump to symbol by name")
 	"bd" '(dired-jump :which-key "open dired from current buffer")
 	))
@@ -276,22 +267,6 @@
 ;; additional LSP UI improvements
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode))
-
-(use-package treemacs
-  :defer t
-  :config
-  (setq treemacs-indentation 2
-		treemacs-no-png-images t
-		treemacs-width 35
-		treemacs-space-between-root-nodes nil
-		treemacs-show-cursor nil))
-
-(use-package treemacs-projectile
-  :after (treemacs projectile))
-
-;; side-menu to show types
-(use-package lsp-treemacs
-  :after (lsp treemacs))
 
 ;; LSP ivy - useful for navigating to function/type that you know by name
 (use-package lsp-ivy
@@ -378,6 +353,9 @@
   ;; set H keybind to toggle visibility
   (evil-collection-define-key 'normal 'dired-mode-map
 	"H" 'dired-hide-dotfiles-mode))
+
+(use-package dired-sidebar
+  :commands (dired-sidebar-toggle-sidebar))
 
 (general-define-key
  "M-k" 'keyboard-escape-quit
