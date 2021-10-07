@@ -61,7 +61,7 @@
 
 ;; Emacs pls don't shit auto-generated stuff in my init.el
 ;;(setq custom-file (concat user-emacs-directory "custom.el"))
-;; right now I am using hardcoded path because I am too smoothbrain to know how to use symbolic links
+;; hard-coded for now
 (setq custom-file "/home/skmd/code/dotfiles/emacs/custom.el")
 (load custom-file)
 
