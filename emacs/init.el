@@ -73,8 +73,10 @@
 ;; initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package) (package-install 'use-package))
 (require 'use-package)
+
 ;; so you don't have to specify :ensure t on every plugin
 (setq use-package-always-ensure t)
+
 ;; useful for debugging startup time
 ;;(setq use-package-verbose t)
 
