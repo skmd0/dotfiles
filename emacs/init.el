@@ -319,6 +319,8 @@
 ;; show fancy tabs from opened buffers
 (use-package centaur-tabs
   :demand
+  :hook
+  (dired-mode . centaur-tabs-local-mode)
   :config
   (setq centaur-tabs-style "bar"
 		centaur-tabs-height 32
