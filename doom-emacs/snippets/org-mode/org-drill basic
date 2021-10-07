@@ -1,7 +1,0 @@
-# key: org-drill-basic
-# name: org-drill basic
-# --
-* Front :drill:
-  ${1:question}
-  ** Back
-     ${2:answer}
