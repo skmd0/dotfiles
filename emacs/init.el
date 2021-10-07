@@ -19,6 +19,10 @@
 ;; disable tooltips
 (tooltip-mode -1)
 
+;; display 100 character ruler
+(setq-default fill-column 100)
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+
 ;; enable line word wrapping
 ;; if line is too long wrap it into next line
 (global-visual-line-mode t)
