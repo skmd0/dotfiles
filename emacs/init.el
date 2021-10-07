@@ -34,7 +34,7 @@
 ;;(setq-default line-spacing 0)
 
 ;; add window padding left and right
-;;(set-fringe-mode 10)
+(set-fringe-mode 0)
 
 ;; set font
 (set-frame-font "Hack 12" nil t)
