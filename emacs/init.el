@@ -59,7 +59,7 @@
 ;; Emacs pls don't shit auto-generated stuff in my init.el
 ;;(setq custom-file (concat user-emacs-directory "custom.el"))
 ;; hard-coded for now
-(setq custom-file "/home/skmd/code/dotfiles/emacs/custom.el")
+(setq custom-file "/home/skmd/.emacs.d/custom.el")
 (load custom-file)
 
 ;; initialize package sources
@@ -241,8 +241,8 @@
   :custom ((projectile-completion-system 'ivy))
   :init
   ;; NOTE: Set this to the folder where you keep your Git repos!
-  (when (file-directory-p "~/code")
-    (setq projectile-project-search-path '("~/code")))
+  (when (file-directory-p "~/Code")
+    (setq projectile-project-search-path '("~/Code")))
   (setq projectile-switch-project-action #'projectile-dired))
 
 ;; completion functionality for projectile
