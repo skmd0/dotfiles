@@ -113,11 +113,6 @@
   :config
   (counsel-mode 1))
 
-;; doom modeline
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
-  :custom (doom-modeline-height 10))
-
 ;; org-mode
 (use-package org
   :commands (org-capture org-agenda))
@@ -144,6 +139,11 @@
   (doom-themes-visual-bell-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
+
+;; doom modeline
+(use-package doom-modeline
+  :init (doom-modeline-mode 1)
+  :custom (doom-modeline-height 10))
 
 ;; rainbow-delimiters colors the matching brackets
 (use-package rainbow-delimiters
