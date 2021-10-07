@@ -52,7 +52,7 @@
 				vterm-mode-hook
 				shell-mode-hook
 				eshell-mode-hook
-				treemacs-mode-hook
+				dired-mode-hook
 				))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
