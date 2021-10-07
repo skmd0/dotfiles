@@ -369,7 +369,7 @@
 ;; just use 1 dired instance instead of having multiple opened for each directory
 (use-package dired-single
   :after dired)
-;; dired-open is another useful emacs package to open external applications by specific file extension
+;; dired-open is another useful emacs package to open external applications by specific extension
 
 ;; package to handle showing/hiding of dotfiles
 (use-package dired-hide-dotfiles
