@@ -34,7 +34,7 @@
 (set-fringe-mode 0)
 
 ;; set font
-(set-frame-font "Hack 12" nil t)
+(set-frame-font "JetBrains Mono 12" nil t)
 
 ;; default emacs behaviour is to put backup and auto-save files
 ;; in the same directory as original file.
