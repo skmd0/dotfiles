@@ -232,6 +232,16 @@
 	"lt" '(dired-sidebar-toggle-sidebar :which-key "toggle project sidebar")
 	"ll" '(lsp-ivy-workspace-symbol :which-key "LSP ivy jump to symbol by name")
 	"bd" '(dired-jump :which-key "open dired from current buffer")
+	"wb" '(split-window-below :which-key "split frame horizontally")
+	"wv" '(split-window-right :which-key "split frame vertically")
+	"wq" '(delete-window :which-key "close current window")
+	"wc" '(delete-other-windows :which-key "close other windows")
+	"we" '(balance-windows :which-key "resize windows to equal size")
+	"ww" '(other-window :which-key "cycle between opened windows")
+	"wl" '(evil-window-right :which-key "move cursor to the window on the right")
+	"wh" '(evil-window-left :which-key "move cursor to the window on the left")
+	"wj" '(evil-window-down :which-key "move cursor to the window below")
+	"wk" '(evil-window-up :which-key "move cursor to the window above")
 	))
 
 ;; project management package
