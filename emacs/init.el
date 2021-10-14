@@ -39,6 +39,9 @@
 ;; y/n for  answering yes/no questions
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; remember the position of your cursor in a file
+(save-place-mode 1)
+
 ;; default emacs behaviour is to put backup and auto-save files
 ;; in the same directory as original file.
 ;; put backup files (~) in specific directory
