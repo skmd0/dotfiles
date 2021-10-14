@@ -389,14 +389,5 @@
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "M-t") 'vterm-other-window)
 
-(use-package mini-frame
-  :init
-  (setq x-gtk-resize-child-frames 'resize-mode)
-  (setq  mini-frame-show-parameters
-   '((top . 250)
-     (width . 0.7)
-     (left . 0.5)))
-  (add-hook 'after-init-hook #'mini-frame-mode))
-
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
