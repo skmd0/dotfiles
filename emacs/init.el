@@ -383,6 +383,10 @@
 (use-package dired-sidebar
   :commands (dired-sidebar-toggle-sidebar))
 
+;; Enable undo-tree, sane undo/redo behavior
+(use-package undo-tree
+  :init (global-undo-tree-mode))
+
 (general-define-key
  "M-k" 'keyboard-escape-quit
  "M-;" 'counsel-M-x
