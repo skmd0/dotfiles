@@ -117,7 +117,9 @@
 
 ;; org-mode
 (use-package org
-  :commands (org-capture org-agenda))
+  :commands (org-capture org-agenda)
+  :config
+  (setq org-return-follows-link t))
 
 ;; org-roam settings
 (use-package org-roam
