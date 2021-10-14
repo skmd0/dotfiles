@@ -36,6 +36,9 @@
 ;; set font
 (set-frame-font "JetBrains Mono 12" nil t)
 
+;; y/n for  answering yes/no questions
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ;; default emacs behaviour is to put backup and auto-save files
 ;; in the same directory as original file.
 ;; put backup files (~) in specific directory
