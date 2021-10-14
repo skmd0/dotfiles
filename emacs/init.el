@@ -43,6 +43,8 @@
 (setq backup-by-copying t)
 ;; set auto-save files (#) in specific directory
 (setq auto-save-file-name-transforms `((".*" "~/.cache/emacs/" t)))
+;; disable lockfiles
+(setq create-lockfiles nil)
 
 ;; display line numbers
 (global-display-line-numbers-mode t)
