@@ -244,6 +244,8 @@
 	"wh" '(evil-window-left :which-key "move cursor to the window on the left")
 	"wj" '(evil-window-down :which-key "move cursor to the window below")
 	"wk" '(evil-window-up :which-key "move cursor to the window above")
+	"ss" '(yas-insert-snippet :which-key "insert snippet")
+	"sn" '(yas-new-snippet :which-key "create a new snippet")
 	))
 
 ;; project management package
@@ -299,7 +301,10 @@
 ;;  :hook (company-mode . company-box-mode))
 
 ;; code snippet system
-(use-package yasnippet)
+(use-package yasnippet
+  :config
+  (setq yas-snippet-dirs '("~/Code/emacs-snippets"))
+  (yas-global-mode 1))
 
 ;; Go programming language intergration
 (use-package go-mode
