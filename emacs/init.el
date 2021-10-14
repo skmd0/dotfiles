@@ -126,7 +126,7 @@
   ;; disable org-roam v2 migration warning at startup
   (setq org-roam-v2-ack t)
   :custom
-  (setq org-roam-directory "~/Code/org-roam")
+  (org-roam-directory "~/Code/org-roam")
   :config
   (org-roam-db-autosync-mode))
 
