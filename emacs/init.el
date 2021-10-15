@@ -257,6 +257,10 @@
 	"wk" '(evil-window-up :which-key "move cursor to the window above")
 	"ss" '(yas-insert-snippet :which-key "insert snippet")
 	"sn" '(yas-new-snippet :which-key "create a new snippet")
+	"mn" '(bookmark-set :which-key "set a bookmark")
+	"mm" '(counsel-bookmark :which-key "open a bookmark")
+	"md" '(bookmark-delete :which-key "delete a bookmark")
+	"ml" '(bookmark-bmenu-list :which-key "list all bookmarks")
 	))
 
 ;; project management package
