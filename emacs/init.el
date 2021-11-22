@@ -234,7 +234,7 @@
     "fr" '(counsel-recentf :which-key "recently opened files")
     "qq" '(save-buffers-kill-terminal :which-key "quit emacs")
     "pp" '(projectile-switch-project :which-key "switch to project - projectile")
-    "pd" '(projectile-dired :which-key "open project directory - projectile")
+    "dp" '(projectile-dired :which-key "open project directory - projectile")
     "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
     "SPC" '(projectile-find-file :which-key "find file in project - projectile")
     "gg" '(magit-status :which-key "git status page - magit")
