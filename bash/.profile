@@ -4,7 +4,7 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-export GOPATH="/home/skmd/.local/share/gopath"
 export USERPATH="/home/skmd/.local/bin"
+export GOPATH="/home/skmd/.local/share/go"
 export PATH=$PATH:$USERPATH:$GOPATH/bin
 
