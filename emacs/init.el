@@ -403,14 +403,6 @@
  "M-o" 'org-open-at-point
  "M-b" 'evil-jump-backward)
 
-(general-define-key
- :keymaps 'org-mode-map
- "C-h" 'org-shiftmetaleft
- "C-j" 'org-move-subtree-down
- "C-k" 'org-move-subtree-up
- "C-l" 'org-shiftmetaright
- "C-~" 'kill-sentence)
-
 ;; for some reason I can't override emacs default keybind with general
 ;; that's why I am overriding it here again until I find correct solution
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
