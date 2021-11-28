@@ -246,6 +246,7 @@
 	"lc" '(lsp-rename :which-key "LSP rename")
 	"lt" '(dired-sidebar-toggle-sidebar :which-key "toggle project sidebar")
 	"ll" '(lsp-ivy-workspace-symbol :which-key "LSP ivy jump to symbol by name")
+	"lf" '(lsp-ui-sideline-apply-code-actions :which-key "LSP apply code action")
 	"db" '(dired-jump :which-key "open dired from current buffer")
 	"wb" '(split-window-below :which-key "split frame horizontally")
 	"wv" '(split-window-right :which-key "split frame vertically")
