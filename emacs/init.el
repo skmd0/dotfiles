@@ -155,8 +155,7 @@
 
 ;; doom modeline
 (use-package doom-modeline
-  :init (doom-modeline-mode 1)
-  :custom (doom-modeline-height 10))
+  :init (doom-modeline-mode 1))
 
 ;; rainbow-delimiters colors the matching brackets
 (use-package rainbow-delimiters
