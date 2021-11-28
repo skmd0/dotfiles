@@ -153,6 +153,9 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+(use-package all-the-icons
+  :if (display-graphic-p))
+
 ;; doom modeline
 (use-package doom-modeline
   :init (doom-modeline-mode 1))
