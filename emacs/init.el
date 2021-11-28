@@ -397,8 +397,12 @@
 (use-package undo-tree
   :init (global-undo-tree-mode))
 
+(use-package avy
+  :after general)
+
 (general-define-key
  "M-k" 'keyboard-escape-quit
+ "M-j" 'avy-goto-char-2
  "M-;" 'counsel-M-x
  "M-o" 'org-open-at-point
  "M-b" 'evil-jump-backward)
