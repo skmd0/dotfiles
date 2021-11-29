@@ -364,10 +364,10 @@
   :custom
   ((dired-listing-switches "-agho --group-directories-first"))
   :config
-  (setq delete-by-moving-to-trash t)
-  (evil-collection-define-key 'normal 'dired-mode-map
-	"h" 'dired-single-up-directory
-	"l" 'dired-single-buffer))
+  (setq delete-by-moving-to-trash t))
+  ;; (evil-collection-define-key 'normal 'dired-mode-map
+  ;; 	"h" 'dired-single-up-directory
+  ;; 	"l" 'dired-single-buffer))
 
 ;; just use 1 dired instance instead of having multiple opened for each directory
 (use-package dired-single
