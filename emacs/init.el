@@ -337,13 +337,6 @@
 (add-hook 'go-mode-hook #'lsp-deferred)
 (add-hook 'go-mode-hook #'yas-minor-mode)
 
-;; built-in terminal emulator configuration
-(use-package term
-  :commands term
-  :config
-  (setq explicit-shell-file-name "bash")
-  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *"))
-
 ;; better terminal emulator
 (use-package vterm
   :commands vterm
