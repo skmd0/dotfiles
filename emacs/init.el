@@ -91,38 +91,7 @@
 ;; useful for debugging startup time
 ;;(setq use-package-verbose t)
 
-;; ivy - suite of packages to show options in a list that you can filter through
-(use-package ivy
-  :diminish
-  :bind (("M-s" . swiper-isearch)
-         :map ivy-minibuffer-map
-         ("TAB" . ivy-alt-done)	
-         ("C-l" . ivy-alt-done)
-         ("C-j" . ivy-next-line)
-         ("C-k" . ivy-previous-line)
-		 ("C-y" . ivy-kill-ring-save)
-		 ("C-p" . yank)
-         :map ivy-switch-buffer-map
-         ("C-k" . ivy-previous-line)
-         ("C-l" . ivy-done)
-         ("C-d" . ivy-switch-buffer-kill)
-         :map ivy-reverse-i-search-map
-         ("C-k" . ivy-previous-line)
-         ("C-d" . ivy-reverse-i-search-kill))
   :config
-  (ivy-mode 1))
-
-;; ivy-rich adds description and keybinds to ivy list items
-(use-package ivy-rich
-  :after ivy
-  :init (ivy-rich-mode 1))
-
-(use-package counsel
-  :bind (("M-;" . counsel-M-x)
-	 :map minibuffer-local-map
-	 ("M-r" . 'counsel-minibuffer-history))
-  :config
-  (counsel-mode 1))
 
 ;; org-mode
 (use-package org
@@ -174,39 +143,6 @@
 
 ;; unmap kill-sentence function
 (global-set-key (kbd "M-k") nil)
-
-;; use VI modal editing
-(use-package evil
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
-  :config
-  (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "M-k") 'evil-normal-state)
-  (define-key evil-insert-state-map (kbd "M-h") 'evil-delete-backward-char-and-join)
-
-  ;; Use visual line motions even outside of visual-line-mode buffers
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-
-  (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'normal))
-
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
-
-(use-package evil-snipe
-  :after evil
-  :config
-  (evil-snipe-mode +1)
-  (evil-snipe-override-mode +1))
-;; disable evil snipe in dired mode so symbolic link shortcut (S) works
-(add-hook 'dired-mode-hook #'turn-off-evil-snipe-mode)
-(add-hook 'dired-mode-hook #'turn-off-evil-snipe-override-mode)
 
 (defun comment-or-uncomment-region-or-line ()
     "Comments or uncomments the region or the current line if there's no active region."
@@ -277,11 +213,6 @@
     (setq projectile-project-search-path '("~/Code")))
   (setq projectile-switch-project-action #'projectile-dired))
 
-;; completion functionality for projectile
-(use-package counsel-projectile
-  :after projectile
-  :config (counsel-projectile-mode))
-
 ;; git front-end
 (use-package magit
   :commands magit-status
@@ -298,25 +229,6 @@
 ;; additional LSP UI improvements
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode))
-
-;; LSP ivy - useful for navigating to function/type that you know by name
-(use-package lsp-ivy
-  :after lsp)
-
-;; auto-completion while you type
-(use-package company
-  :after lsp-mode
-  :hook (prog-mode . company-mode)
-  :bind
-  (:map company-active-map ("<tab>" . company-complete-selection))
-  (:map lsp-mode-map ("<tab>" . company-indent-or-complete-common))
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0))
-
-;; better company UI - commented for maybe future use
-;;(use-package company-box
-;;  :hook (company-mode . company-box-mode))
 
 ;; code snippet system
 (use-package yasnippet
@@ -404,6 +316,92 @@
 ;; that's why I am overriding it here again until I find correct solution
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "M-t") 'vterm-other-window)
+
+;; REPLACE ;;
+
+;; ivy - suite of packages to show options in a list that you can filter through
+(use-package ivy
+  :diminish
+  :bind (("M-s" . swiper-isearch)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)	
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+		 ("C-y" . ivy-kill-ring-save)
+		 ("C-p" . yank)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
+  :config
+  (ivy-mode 1))
+
+;; set that ivy doesn't start with ^
+(setq ivy-initial-inputs-alist nil)
+
+;; ivy-rich adds description and keybinds to ivy list items
+(use-package ivy-rich
+  :after ivy
+  :init (ivy-rich-mode 1))
+
+(use-package counsel
+  :bind (("M-;" . counsel-M-x)
+	 :map minibuffer-local-map
+	 ("M-r" . 'counsel-minibuffer-history))
+  :config
+  (counsel-mode 1))
+
+;; LSP ivy - useful for navigating to function/type that you know by name
+(use-package lsp-ivy
+  :after lsp)
+
+;; auto-completion while you type
+(use-package company
+  :after lsp-mode
+  :hook (prog-mode . company-mode)
+  :bind
+  (:map company-active-map ("<tab>" . company-complete-selection))
+  (:map lsp-mode-map ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0))
+
+;; use VI modal editing
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-i-jump nil)
+  :config
+  (evil-mode 1)
+  (define-key evil-insert-state-map (kbd "M-k") 'evil-normal-state)
+  (define-key evil-insert-state-map (kbd "M-h") 'evil-delete-backward-char-and-join)
+
+  ;; Use visual line motions even outside of visual-line-mode buffers
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+  (evil-set-initial-state 'messages-buffer-mode 'normal)
+  (evil-set-initial-state 'dashboard-mode 'normal))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+(use-package evil-snipe
+  :after evil
+  :config
+  (evil-snipe-mode +1)
+  (evil-snipe-override-mode +1))
+;; disable evil snipe in dired mode so symbolic link shortcut (S) works
+(add-hook 'dired-mode-hook #'turn-off-evil-snipe-mode)
+(add-hook 'dired-mode-hook #'turn-off-evil-snipe-override-mode)
 
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
