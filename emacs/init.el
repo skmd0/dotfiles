@@ -132,6 +132,7 @@
 ;; unmap kill-sentence function
 (global-set-key (kbd "M-k") nil)
 
+;; custom function for commenting/uncommenting text
 (defun comment-or-uncomment-region-or-line ()
     "Comments or uncomments the region or the current line if there's no active region."
     (interactive)
