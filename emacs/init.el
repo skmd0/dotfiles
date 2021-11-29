@@ -344,18 +344,18 @@
   (setq vterm-max-scrollback 10000))
 
 ;; show fancy tabs from opened buffers
-(use-package centaur-tabs
-  :demand
-  :hook
-  (dired-mode . centaur-tabs-local-mode)
-  :config
-  (setq centaur-tabs-style "bar"
-		centaur-tabs-height 32
-		centaur-tabs-cycle-scope 'tabs)
-  (centaur-tabs-mode t)
-  :bind
-  ("M-[" . centaur-tabs-backward)
-  ("M-]" . centaur-tabs-forward))
+;; (use-package centaur-tabs
+;;   :demand
+;;   :hook
+;;   (dired-mode . centaur-tabs-local-mode)
+;;   :config
+;;   (setq centaur-tabs-style "bar"
+;; 		centaur-tabs-height 32
+;; 		centaur-tabs-cycle-scope 'tabs)
+;;   (centaur-tabs-mode t)
+;;   :bind
+;;   ("M-[" . centaur-tabs-backward)
+;;   ("M-]" . centaur-tabs-forward))
 
 ;; configuration for built-in directory manager
 (use-package dired
