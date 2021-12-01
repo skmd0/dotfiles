@@ -301,8 +301,6 @@
  "M-o" 'org-open-at-point
  "M-b" 'evil-jump-backward)
 
-;; for some reason I can't override emacs default keybind with general
-;; that's why I am overriding it here again until I find correct solution
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "M-t") 'vterm-other-window)
 
