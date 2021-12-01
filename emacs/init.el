@@ -281,47 +281,56 @@
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "M-t") 'vterm-other-window)
 
-;; REPLACE ;;
+;; minibuffer menu (alternative to ivy)
+(use-package vertico
+ :init
+  (vertico-mode))
 
-;; ivy - suite of packages to show options in a list that you can filter through
-(use-package ivy
-  :diminish
-  :bind (("M-s" . swiper-isearch)
-         :map ivy-minibuffer-map
-         ("TAB" . ivy-alt-done)	
-         ("C-l" . ivy-alt-done)
-         ("C-j" . ivy-next-line)
-         ("C-k" . ivy-previous-line)
-		 ("C-y" . ivy-kill-ring-save)
-		 ("C-p" . yank)
-         :map ivy-switch-buffer-map
-         ("C-k" . ivy-previous-line)
-         ("C-l" . ivy-done)
-         ("C-d" . ivy-switch-buffer-kill)
-         :map ivy-reverse-i-search-map
-         ("C-k" . ivy-previous-line)
-         ("C-d" . ivy-reverse-i-search-kill))
-  :config
-  (ivy-mode 1))
+;; packing for better result filtering in minibuffer
+(use-package orderless
+  :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq completion-styles '(orderless)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
 
-;; set that ivy doesn't start with ^
-(setq ivy-initial-inputs-alist nil)
+;; make sure vertico saves history (useful for recent file selection)
+(use-package savehist
+  :init
+  (savehist-mode))
 
-;; ivy-rich adds description and keybinds to ivy list items
-(use-package ivy-rich
-  :after ivy
-  :init (ivy-rich-mode 1))
+;; A few more useful configurations...
+(use-package emacs
+  :init
+  ;; Add prompt indicator to `completing-read-multiple'.
+  ;; Alternatively try `consult-completing-read-multiple'.
+  (defun crm-indicator (args)
+    (cons (concat "[CRM] " (car args)) (cdr args)))
+  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
 
-(use-package counsel
-  :bind (("M-;" . counsel-M-x)
-	 :map minibuffer-local-map
-	 ("M-r" . 'counsel-minibuffer-history))
-  :config
-  (counsel-mode 1))
+  ;; Do not allow the cursor in the minibuffer prompt
+  (setq minibuffer-prompt-properties
+        '(read-only t cursor-intangible t face minibuffer-prompt))
+  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
-;; LSP ivy - useful for navigating to function/type that you know by name
-(use-package lsp-ivy
-  :after lsp)
+  ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
+  ;; Vertico commands are hidden in normal buffers.
+  ;; (setq read-extended-command-predicate
+  ;;       #'command-completion-default-include-p)
+
+  ;; Enable recursive minibuffers
+  (setq enable-recursive-minibuffers t))
+
+(use-package marginalia
+  :after vertico
+  :ensure t
+  :custom
+  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+  :init
+  (marginalia-mode))
+
 ;; custom C-c C- keybinds
 (use-package ctrlf)
 (ctrlf-mode +1)
