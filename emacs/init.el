@@ -278,11 +278,11 @@
 ;; package to handle showing/hiding of dotfiles
 (use-package dired-hide-dotfiles
   ;; hide dotfiles by default
-  :hook (dired-mode . dired-hide-dotfiles-mode)
-  :config
-  ;; set H keybind to toggle visibility
-  (evil-collection-define-key 'normal 'dired-mode-map
-	"H" 'dired-hide-dotfiles-mode))
+  :hook (dired-mode . dired-hide-dotfiles-mode))
+  ;; :config
+  ;; ;; set H keybind to toggle visibility
+  ;; (evil-collection-define-key 'normal 'dired-mode-map
+  ;; 	"H" 'dired-hide-dotfiles-mode))
 
 ;; (use-package dired-sidebar
 ;;   :commands (dired-sidebar-toggle-sidebar))
@@ -359,38 +359,54 @@
   (company-minimum-prefix-length 1)
   (company-idle-delay 0))
 
+;; must come before loading xah-fly-keys
+(setq xah-fly-use-control-key nil)
+;; disable shift select
+(setq shift-select-mode nil)
+
+;; xah fly keys model editing
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'xah-fly-keys)
+;; specify a layout
+(xah-fly-keys-set-layout "qwerty")
+;; make typing delete/overwrites selected text
+(delete-selection-mode 1)
+(xah-fly-keys 1)
+(define-key key-translation-map (kbd "ESC") (kbd "C-g"))
+
+
 ;; use VI modal editing
-(use-package evil
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
-  :config
-  (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "M-k") 'evil-normal-state)
-  (define-key evil-insert-state-map (kbd "M-h") 'evil-delete-backward-char-and-join)
+;; (use-package evil
+;;   :init
+;;   (setq evil-want-integration t)
+;;   (setq evil-want-keybinding nil)
+;;   (setq evil-want-C-u-scroll t)
+;;   (setq evil-want-C-i-jump nil)
+;;   :config
+;;   (evil-mode 1)
+;;   (define-key evil-insert-state-map (kbd "M-k") 'evil-normal-state)
+;;   (define-key evil-insert-state-map (kbd "M-h") 'evil-delete-backward-char-and-join)
 
-  ;; Use visual line motions even outside of visual-line-mode buffers
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+;;   ;; Use visual line motions even outside of visual-line-mode buffers
+;;   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+;;   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
-  (evil-set-initial-state 'messages-buffer-mode 'normal)
-  (evil-set-initial-state 'dashboard-mode 'normal))
+;;   (evil-set-initial-state 'messages-buffer-mode 'normal)
+;;   (evil-set-initial-state 'dashboard-mode 'normal))
 
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
+;; (use-package evil-collection
+;;   :after evil
+;;   :config
+;;   (evil-collection-init))
 
-(use-package evil-snipe
-  :after evil
-  :config
-  (evil-snipe-mode +1)
-  (evil-snipe-override-mode +1))
-;; disable evil snipe in dired mode so symbolic link shortcut (S) works
-(add-hook 'dired-mode-hook #'turn-off-evil-snipe-mode)
-(add-hook 'dired-mode-hook #'turn-off-evil-snipe-override-mode)
+;; (use-package evil-snipe
+;;   :after evil
+;;   :config
+;;   (evil-snipe-mode +1)
+;;   (evil-snipe-override-mode +1))
+;; ;; disable evil snipe in dired mode so symbolic link shortcut (S) works
+;; (add-hook 'dired-mode-hook #'turn-off-evil-snipe-mode)
+;; (add-hook 'dired-mode-hook #'turn-off-evil-snipe-override-mode)
 
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
