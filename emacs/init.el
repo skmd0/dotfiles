@@ -339,22 +339,9 @@
   (company-minimum-prefix-length 1)
   (company-idle-delay 0))
 
-;; must come before loading xah-fly-keys
-(setq xah-fly-use-control-key nil)
-;; disable shift select
-(setq shift-select-mode nil)
-
-;; xah fly keys model editing
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-(require 'xah-fly-keys)
-;; specify a layout
-(xah-fly-keys-set-layout "qwerty")
-;; make typing delete/overwrites selected text
-(delete-selection-mode 1)
-(xah-fly-keys 1)
-(define-key key-translation-map (kbd "ESC") (kbd "C-g"))
-
-
+(use-package boon)
+(require 'boon-qwerty) ;; for qwerty variant
+(boon-mode) ;; to enable boon everywhere
 
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
