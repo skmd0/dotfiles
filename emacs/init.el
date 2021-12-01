@@ -143,53 +143,52 @@
         (comment-or-uncomment-region beg end)))
 
 ;; package to setup keybinds in a nice way
-(use-package general
-  :after evil
-  :config
-  (general-create-definer skmd/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
-  (skmd/leader-keys
-    "nn" '(org-roam-node-find :which-key "select org-roam file")
-    "ni" '(org-roam-node-insert :which-key "insert org-roam link")
-    "nt" '(org-roam-buffer-toggle :which-key "toggle org-roam buffer")
-    "bb" '(ivy-switch-buffer :which-key "switch buffer")
-    "bk" '(kill-current-buffer :which-key "kill current buffer")
-    "bs" '(save-buffer :which-key "save buffer")
-    "ff" '(counsel-find-file :which-key "find file")
-    "fr" '(counsel-recentf :which-key "recently opened files")
-    "qq" '(save-buffers-kill-terminal :which-key "quit emacs")
-    "pp" '(projectile-switch-project :which-key "switch to project - projectile")
-    "dp" '(projectile-dired :which-key "open project directory - projectile")
-    "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
-    "SPC" '(projectile-find-file :which-key "find file in project - projectile")
-    "gg" '(magit-status :which-key "git status page - magit")
-    "dd" '(dired :which-key "dired")
-	"lr" '(lsp-find-references :which-key "LSP find references")
-	"ld" '(lsp-find-definition :which-key "LSP find definition")
-	"lc" '(lsp-rename :which-key "LSP rename")
-	"lt" '(dired-sidebar-toggle-sidebar :which-key "toggle project sidebar")
-	"ll" '(lsp-ivy-workspace-symbol :which-key "LSP ivy jump to symbol by name")
-	"lf" '(lsp-ui-sideline-apply-code-actions :which-key "LSP apply code action")
-	"db" '(dired-jump :which-key "open dired from current buffer")
-	"wb" '(split-window-below :which-key "split frame horizontally")
-	"wv" '(split-window-right :which-key "split frame vertically")
-	"wq" '(delete-window :which-key "close current window")
-	"wc" '(delete-other-windows :which-key "close other windows")
-	"we" '(balance-windows :which-key "resize windows to equal size")
-	"ww" '(other-window :which-key "cycle between opened windows")
-	"wl" '(evil-window-right :which-key "move cursor to the window on the right")
-	"wh" '(evil-window-left :which-key "move cursor to the window on the left")
-	"wj" '(evil-window-down :which-key "move cursor to the window below")
-	"wk" '(evil-window-up :which-key "move cursor to the window above")
-	"ss" '(yas-insert-snippet :which-key "insert snippet")
-	"sn" '(yas-new-snippet :which-key "create a new snippet")
-	"mn" '(bookmark-set :which-key "set a bookmark")
-	"mm" '(counsel-bookmark :which-key "open a bookmark")
-	"md" '(bookmark-delete :which-key "delete a bookmark")
-	"ml" '(bookmark-bmenu-list :which-key "list all bookmarks")
-	))
+;; (use-package general
+;;   :config
+;;   (general-create-definer skmd/leader-keys
+;;     :keymaps '(normal insert visual emacs)
+;;     :prefix "SPC"
+;;     :global-prefix "C-SPC")
+;;   (skmd/leader-keys
+;;     "nn" '(org-roam-node-find :which-key "select org-roam file")
+;;     "ni" '(org-roam-node-insert :which-key "insert org-roam link")
+;;     "nt" '(org-roam-buffer-toggle :which-key "toggle org-roam buffer")
+;;     "bb" '(ivy-switch-buffer :which-key "switch buffer")
+;;     "bk" '(kill-current-buffer :which-key "kill current buffer")
+;;     "bs" '(save-buffer :which-key "save buffer")
+;;     "ff" '(counsel-find-file :which-key "find file")
+;;     "fr" '(counsel-recentf :which-key "recently opened files")
+;;     "qq" '(save-buffers-kill-terminal :which-key "quit emacs")
+;;     "pp" '(projectile-switch-project :which-key "switch to project - projectile")
+;;     "dp" '(projectile-dired :which-key "open project directory - projectile")
+;;     "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
+;;     "SPC" '(projectile-find-file :which-key "find file in project - projectile")
+;;     "gg" '(magit-status :which-key "git status page - magit")
+;;     "dd" '(dired :which-key "dired")
+;; 	"lr" '(lsp-find-references :which-key "LSP find references")
+;; 	"ld" '(lsp-find-definition :which-key "LSP find definition")
+;; 	"lc" '(lsp-rename :which-key "LSP rename")
+;; 	"lt" '(dired-sidebar-toggle-sidebar :which-key "toggle project sidebar")
+;; 	"ll" '(lsp-ivy-workspace-symbol :which-key "LSP ivy jump to symbol by name")
+;; 	"lf" '(lsp-ui-sideline-apply-code-actions :which-key "LSP apply code action")
+;; 	"db" '(dired-jump :which-key "open dired from current buffer")
+;; 	"wb" '(split-window-below :which-key "split frame horizontally")
+;; 	"wv" '(split-window-right :which-key "split frame vertically")
+;; 	"wq" '(delete-window :which-key "close current window")
+;; 	"wc" '(delete-other-windows :which-key "close other windows")
+;; 	"we" '(balance-windows :which-key "resize windows to equal size")
+;; 	"ww" '(other-window :which-key "cycle between opened windows")
+;; 	;; "wl" '(evil-window-right :which-key "move cursor to the window on the right")
+;; 	;; "wh" '(evil-window-left :which-key "move cursor to the window on the left")
+;; 	;; "wj" '(evil-window-down :which-key "move cursor to the window below")
+;; 	;; "wk" '(evil-window-up :which-key "move cursor to the window above")
+;; 	"ss" '(yas-insert-snippet :which-key "insert snippet")
+;; 	"sn" '(yas-new-snippet :which-key "create a new snippet")
+;; 	"mn" '(bookmark-set :which-key "set a bookmark")
+;; 	"mm" '(counsel-bookmark :which-key "open a bookmark")
+;; 	"md" '(bookmark-delete :which-key "delete a bookmark")
+;; 	"ml" '(bookmark-bmenu-list :which-key "list all bookmarks")
+;; 	))
 
 ;; project management package
 (use-package projectile
@@ -244,7 +243,6 @@
   :config
   (setq vterm-max-scrollback 10000))
 
-
 ;; configuration for built-in directory manager
 (use-package dired
   :ensure nil
@@ -278,9 +276,7 @@
 (use-package undo-tree
   :init (global-undo-tree-mode))
 
-(use-package avy
-  :after general)
-
+(use-package avy)
 
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "M-t") 'vterm-other-window)
