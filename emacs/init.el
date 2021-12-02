@@ -326,9 +326,6 @@
   (company-minimum-prefix-length 1)
   (company-idle-delay 0))
 
-(use-package boon)
-(require 'boon-qwerty) ;; for qwerty variant
-(boon-mode) ;; to enable boon everywhere
 
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
