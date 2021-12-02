@@ -291,7 +291,6 @@
   (consult-project-root-function #'skmd/get-project-root)
   (completion-in-region-function #'consult-completion-in-region))
 
-(global-set-key (kbd "C-c C-f") 'consult-line)
 (global-set-key (kbd "C-c C-S-f") 'consult-ripgrep)
 (global-set-key (kbd "C-c C-n") 'org-roam-node-find)
 (global-set-key (kbd "C-c C-S-O") 'consult-recent-file)
@@ -388,7 +387,7 @@
    '("l" . meow-right)
    '("L" . meow-right-expand)
    '("m" . meow-join)
-   '("n" . meow-search)
+   '("n" . consult-line)
    '("o" . meow-block)
    '("O" . meow-to-block)
    '("p" . meow-yank)
