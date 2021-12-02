@@ -325,7 +325,6 @@
 
 (use-package marginalia
   :after vertico
-  :ensure t
   :custom
   (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
   :init
