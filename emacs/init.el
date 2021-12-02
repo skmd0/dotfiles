@@ -291,6 +291,17 @@
   (consult-project-root-function #'skmd/get-project-root)
   (completion-in-region-function #'consult-completion-in-region))
 
+(global-set-key (kbd "C-c C-f") 'consult-line)
+(global-set-key (kbd "C-c C-g") 'consult-ripgrep)
+(global-set-key (kbd "C-c C-n") 'org-roam-node-find)
+(global-set-key (kbd "C-c C-o") 'find-file)
+(global-set-key (kbd "C-c C-S-O") 'consult-recent-file)
+(global-set-key (kbd "C-c C-q") 'save-buffers-kill-terminal)
+(global-set-key (kbd "C-c C-S-p") 'projectile-switch-project)
+(global-set-key (kbd "C-c C-d") 'dired-jump)
+(global-set-key (kbd "C-c C-p") 'projectile-find-file)
+(global-set-key (kbd "C-c C-s") 'yas-insert-snipet)
+
 ;;     "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
 ;; 	"lr" '(lsp-find-references :which-key "LSP find references")
 ;; 	"ld" '(lsp-find-definition :which-key "LSP find definition")
