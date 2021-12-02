@@ -282,6 +282,14 @@
   :init
   (marginalia-mode))
 
+(defun skmd/get-project-root ()
+  (when (fboundp 'projectile-project-root)
+    (projectile-project-root)))
+
+(use-package consult
+  :custom
+  (consult-project-root-function #'skmd/get-project-root)
+  (completion-in-region-function #'consult-completion-in-region))
 
 ;; auto-completion while you type
 (use-package company
