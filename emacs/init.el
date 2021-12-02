@@ -282,11 +282,6 @@
   :init
   (marginalia-mode))
 
-;; custom C-c C- keybinds
-(use-package ctrlf)
-(ctrlf-mode +1)
-(global-set-key (kbd "C-c C-f") 'ctrlf-forward-default)
-(global-set-key (kbd "C-c C-S-f") 'ctrlf-forward-alternate)
 
 ;; auto-completion while you type
 (use-package company
