@@ -397,7 +397,7 @@
    '("r" . meow-replace)
    '("R" . meow-swap-grab)
    '("s" . meow-kill)
-   '("t" . meow-till)
+   '("t" . avy-goto-char-2)
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
    '("v" . meow-visit)
