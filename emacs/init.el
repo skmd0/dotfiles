@@ -129,9 +129,6 @@
   (which-key-mode)
   (setq which-key-idle-delay 0.5))
 
-;; unmap kill-sentence function
-(global-set-key (kbd "M-k") nil)
-
 ;; custom function for commenting/uncommenting text
 (defun comment-or-uncomment-region-or-line ()
     "Comments or uncomments the region or the current line if there's no active region."
@@ -231,9 +228,6 @@
 
 (use-package avy)
 
-(global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
-(global-set-key (kbd "M-t") 'vterm-other-window)
-
 ;; minibuffer menu (alternative to ivy)
 (use-package vertico
  :init
@@ -292,16 +286,6 @@
   (consult-project-root-function #'skmd/get-project-root)
   (completion-in-region-function #'consult-completion-in-region))
 
-(global-set-key (kbd "C-c C-S-f") 'consult-ripgrep)
-(global-set-key (kbd "C-c C-n") 'org-roam-node-find)
-(global-set-key (kbd "C-c C-S-O") 'consult-recent-file)
-(global-set-key (kbd "C-c C-q") 'save-buffers-kill-terminal)
-(global-set-key (kbd "C-c C-S-p") 'projectile-switch-project)
-(global-set-key (kbd "C-c C-p") 'projectile-find-file)
-(global-set-key (kbd "C-c C-d") 'dired-jump)
-(global-set-key (kbd "C-c C-s") 'yas-insert-snipet)
-
-;;     "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
 ;; 	"lr" '(lsp-find-references :which-key "LSP find references")
 ;; 	"ld" '(lsp-find-definition :which-key "LSP find definition")
 ;; 	"lc" '(lsp-rename :which-key "LSP rename")
@@ -313,6 +297,7 @@
 ;; 	"mm" '(counsel-bookmark :which-key "open a bookmark")
 ;; 	"md" '(bookmark-delete :which-key "delete a bookmark")
 ;; 	"ml" '(bookmark-bmenu-list :which-key "list all bookmarks")
+;;  "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
 
 ;; auto-completion while you type
 (use-package company
@@ -414,6 +399,31 @@
 (meow-setup)
 (meow-global-mode 1)
 (setq meow-use-clipboard t)
+
+;; disable org mode C-c keybinds
+(eval-after-load "org" '(define-key org-mode-map (kbd "C-,") nil))
+
+;; meta key custom keybinds
+(global-set-key (kbd "M-j") 'scroll-up-line)
+(global-set-key (kbd "M-k") 'scroll-down-line)
+(global-set-key (kbd "M-;") 'meow-M-x)
+(global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "M-l") 'recenter)
+
+;; control key custom keybinds
+(global-set-key (kbd "C-c C-t") 'vterm-other-window)
+(global-set-key (kbd "C-c C-S-f") 'consult-ripgrep)
+(global-set-key (kbd "C-c C-n") 'org-roam-node-find)
+(global-set-key (kbd "C-c C-S-O") 'consult-recent-file)
+(global-set-key (kbd "C-c C-q") 'save-buffers-kill-terminal)
+(global-set-key (kbd "C-c C-S-p") 'projectile-switch-project)
+(global-set-key (kbd "C-c C-p") 'projectile-find-file)
+(global-set-key (kbd "C-c C-d") 'dired-jump)
+(global-set-key (kbd "C-c C-s") 'yas-insert-snipet)
+(global-set-key (kbd "C-c C-b") 'switch-to-buffer)
+(global-set-key (kbd "C-c M-o C-n") 'bookmark-set)
+(global-set-key (kbd "C-c M-o C-o") 'consult-bookmark)
+(global-set-key (kbd "C-c M-o C-l") 'bookmark-bmenu-list)
 
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
