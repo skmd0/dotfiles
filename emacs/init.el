@@ -310,14 +310,19 @@
 ;; 	"ml" '(bookmark-bmenu-list :which-key "list all bookmarks")
 ;;  "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
 
-
+;; code completion menu while you type
 (use-package corfu
-  :bind (:map corfu-map
-         ("C-j" . corfu-next)
-         ("C-k" . corfu-previous)
-         ("C-f" . corfu-insert))
+  :bind
+  (:map corfu-map
+        ("TAB" . corfu-next)
+        ([tab] . corfu-next)
+        ("S-TAB" . corfu-previous)
+        ([backtab] . corfu-previous))
   :custom
   (corfu-cycle t)
+  (corfu-auto t)              ;; Enable auto completion
+  (corfu-preview-current t)   ;; enable preview
+  (corfu-preselect-first nil) ;; Disable candidate preselection
   :config
   (corfu-global-mode))
 
