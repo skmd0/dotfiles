@@ -267,6 +267,13 @@
   ;; (setq read-extended-command-predicate
   ;;       #'command-completion-default-include-p)
 
+  ;; TAB cycle if there are only few candidates
+  (setq completion-cycle-threshold 3)
+
+  ;; Enable indentation+completion using the TAB key.
+  ;; `completion-at-point' is often bound to M-TAB.
+  (setq tab-always-indent 'complete)
+
   ;; Enable recursive minibuffers
   (setq enable-recursive-minibuffers t))
 
@@ -299,17 +306,16 @@
 ;; 	"ml" '(bookmark-bmenu-list :which-key "list all bookmarks")
 ;;  "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
 
-;; auto-completion while you type
-(use-package company
-  :after lsp-mode
-  :hook (prog-mode . company-mode)
-  :bind
-  (:map company-active-map ("<tab>" . company-complete-selection))
-  (:map lsp-mode-map ("<tab>" . company-indent-or-complete-common))
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0))
 
+(use-package corfu
+  :bind (:map corfu-map
+         ("C-j" . corfu-next)
+         ("C-k" . corfu-previous)
+         ("C-f" . corfu-insert))
+  :custom
+  (corfu-cycle t)
+  :config
+  (corfu-global-mode))
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
