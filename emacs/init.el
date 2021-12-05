@@ -326,6 +326,10 @@
   :config
   (corfu-global-mode))
 
+;; (use-package meow)
+;; use custom meow package until you are done writing tutorial
+(add-to-list 'load-path "~/.emacs.d/lisp/meow/")
+(load "meow")
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
@@ -374,7 +378,7 @@
    '("D" . meow-backward-delete)
    '("e" . meow-next-word)
    '("E" . meow-next-symbol)
-   '("f" . meow-search)
+   '("f" . meow-find)
    '("g" . meow-cancel-selection)
    '("G" . meow-grab)
    '("h" . meow-left)
@@ -389,6 +393,7 @@
    '("L" . meow-right-expand)
    '("m" . meow-join)
    '("n" . consult-line)
+   ;;'("n" . meow-search)
    '("o" . meow-block)
    '("O" . meow-to-block)
    '("p" . meow-yank)
@@ -397,6 +402,7 @@
    '("r" . meow-replace)
    '("R" . meow-swap-grab)
    '("s" . meow-kill)
+   ;; '("t" . meow-till)
    '("t" . avy-goto-char-2)
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
@@ -408,9 +414,9 @@
    '("y" . meow-save)
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
-   '("'" . repeat)))
-
-(use-package meow)
+   '("'" . repeat)
+   ;; '("<escape>" . mode-line-other-buffer)
+   ))
 (meow-setup)
 (meow-global-mode 1)
 (setq meow-use-clipboard t)
