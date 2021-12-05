@@ -424,6 +424,7 @@
 (global-set-key (kbd "M-;") 'meow-M-x)
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "M-l") 'recenter)
+(global-set-key (kbd "M-e") 'consult-flymake)
 
 ;; control key custom keybinds
 (global-set-key (kbd "C-c C-t") 'vterm-other-window)
