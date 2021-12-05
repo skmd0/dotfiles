@@ -173,6 +173,10 @@
   (setq yas-snippet-dirs '("~/Code/emacs-snippets"))
   (yas-global-mode 1))
 
+;; auto-matically close the ([{"
+(use-package smartparens
+  :hook (prog-mode . smartparens-mode))
+
 ;; Go programming language intergration
 (use-package go-mode
   :mode "\\.go\\'"
