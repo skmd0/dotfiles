@@ -419,7 +419,7 @@
 (setq meow-use-clipboard t)
 
 ;; disable org mode C-c keybinds
-(eval-after-load "org" '(define-key org-mode-map (kbd "C-,") nil))
+(eval-after-load "org" '(define-key org-mode-map (kbd "C-c") nil))
 
 ;; meta key custom keybinds
 (global-set-key (kbd "M-j") 'scroll-up-line)
