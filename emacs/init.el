@@ -389,7 +389,6 @@
    '("l" . meow-right)
    '("L" . meow-right-expand)
    '("m" . meow-join)
-   ;; '("n" . consult-line)
    '("n" . meow-search)
    '("o" . meow-block)
    '("O" . meow-to-block)
@@ -431,6 +430,7 @@
 
 ;; control key custom keybinds
 (global-set-key (kbd "C-c C-t") 'vterm-other-window)
+(global-set-key (kbd "C-c C-f") 'consult-line)
 (global-set-key (kbd "C-c C-S-f") 'consult-ripgrep)
 (global-set-key (kbd "C-c C-n") 'org-roam-node-find)
 (global-set-key (kbd "C-c C-S-O") 'consult-recent-file)
