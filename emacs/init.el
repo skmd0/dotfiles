@@ -326,10 +326,10 @@
   :config
   (corfu-global-mode))
 
-;; (use-package meow)
+(use-package meow)
 ;; use custom meow package until you are done writing tutorial
-(add-to-list 'load-path "~/.emacs.d/lisp/meow/")
-(load "meow")
+;; (add-to-list 'load-path "/home/skmd/Code/meow")
+;; (load "meow")
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
@@ -392,8 +392,8 @@
    '("l" . meow-right)
    '("L" . meow-right-expand)
    '("m" . meow-join)
-   '("n" . consult-line)
-   ;;'("n" . meow-search)
+   ;; '("n" . consult-line)
+   '("n" . meow-search)
    '("o" . meow-block)
    '("O" . meow-to-block)
    '("p" . meow-yank)
@@ -402,8 +402,8 @@
    '("r" . meow-replace)
    '("R" . meow-swap-grab)
    '("s" . meow-kill)
-   ;; '("t" . meow-till)
-   '("t" . avy-goto-char-2)
+   '("t" . meow-till)
+   ;; '("t" . avy-goto-char-2)
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
    '("v" . meow-visit)
