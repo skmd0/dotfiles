@@ -1,5 +1,0 @@
-export GOPATH="/home/skmd/.local/gopath"
-export PATH="$PATH:/home/skmd/.local/go/bin:$GOPATH/bin:/home/skmd/.local/bin/:/home/skmd/.emacs.d/bin"
-export EDITOR=emacs
-alias fd=fdfind
-
