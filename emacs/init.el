@@ -435,7 +435,7 @@
 (global-set-key (kbd "C-c C-q") 'save-buffers-kill-terminal)
 (global-set-key (kbd "C-c C-S-p") 'projectile-switch-project)
 (global-set-key (kbd "C-c C-p") 'projectile-find-file)
-(global-set-key (kbd "C-c C-d") 'dired-jump)
+(global-set-key (kbd "C-c C-d") 'dired)
 (global-set-key (kbd "C-c C-s") 'yas-insert-snipet)
 (global-set-key (kbd "C-c C-b") 'switch-to-buffer)
 (global-set-key (kbd "C-c M-o C-n") 'bookmark-set)
