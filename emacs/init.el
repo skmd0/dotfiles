@@ -43,7 +43,7 @@
 (save-place-mode 1)
 
 ;; reopen files from previous session
-(desktop-save-mode 1)
+;;(desktop-save-mode 1)
 
 ;; default emacs behaviour is to put backup and auto-save files
 ;; in the same directory as original file.
