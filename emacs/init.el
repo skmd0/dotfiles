@@ -171,6 +171,8 @@
 ;; Go programming language intergration
 (use-package go-mode
   :mode "\\.go\\'")
+;; automatically load eglot when go-mode is active
+(add-hook 'go-mode-hook 'eglot-ensure)
 ;; add hooks to format code and organize imports on save
 (defun skmd-eglot-go-mode-save ()
   (add-hook 'before-save-hook #'eglot-format-buffer t t)
