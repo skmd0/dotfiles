@@ -256,11 +256,11 @@
   ;;       #'command-completion-default-include-p)
 
   ;; TAB cycle if there are only few candidates
-  (setq completion-cycle-threshold 3)
+  ;; (setq completion-cycle-threshold 3)
 
   ;; Enable indentation+completion using the TAB key.
   ;; `completion-at-point' is often bound to M-TAB.
-  (setq tab-always-indent 'complete)
+  ;; (setq tab-always-indent 'complete)
 
   ;; Enable recursive minibuffers
   (setq enable-recursive-minibuffers t))
@@ -294,21 +294,15 @@
 ;; 	"ml" '(bookmark-bmenu-list :which-key "list all bookmarks")
 ;;  "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
 
-;; code completion menu while you type
-(use-package corfu
+;; auto-completion while you type
+(use-package company
+  :hook (prog-mode . company-mode)
   :bind
-  (:map corfu-map
-        ("TAB" . corfu-next)
-        ([tab] . corfu-next)
-        ("S-TAB" . corfu-previous)
-        ([backtab] . corfu-previous))
+  (:map company-active-map ("<tab>" . company-complete-selection))
+  ;; (:map eglot-mode-map ("<tab>" . company-indent-or-complete-common))
   :custom
-  (corfu-cycle t)
-  (corfu-auto t)              ;; Enable auto completion
-  (corfu-preview-current t)   ;; enable preview
-  (corfu-preselect-first nil) ;; Disable candidate preselection
-  :config
-  (corfu-global-mode))
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0))
 
 (use-package meow)
 ;; use custom meow package until you are done writing tutorial
