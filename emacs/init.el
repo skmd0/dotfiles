@@ -156,17 +156,6 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-;; Language Server Protocol for ide-like features
-(use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :config
-  (lsp-enable-which-key-integration t)
-  (setq lsp-headerline-breadcrumb-enable nil))
-
-;; additional LSP UI improvements
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode))
-
 ;; code snippet system
 (use-package yasnippet
   :config
@@ -177,18 +166,16 @@
 (use-package smartparens
   :hook (prog-mode . smartparens-mode))
 
+(use-package eglot)
+
 ;; Go programming language intergration
 (use-package go-mode
-  :mode "\\.go\\'"
-  :hook (go-mode . lsp-deferred))
+  :mode "\\.go\\'")
 ;; add hooks to format code and organize imports on save
-(defun lsp-go-install-save-hooks ()
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t))
-(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-;; add hooks to enable LSP and yas snippets while working with Go code
-(add-hook 'go-mode-hook #'lsp-deferred)
-(add-hook 'go-mode-hook #'yas-minor-mode)
+(defun skmd-eglot-go-mode-save ()
+  (add-hook 'before-save-hook #'eglot-format-buffer t t)
+  (add-hook 'before-save-hook #'eglot-code-action-organize-imports t t))
+(add-hook 'go-mode-hook #'skmd-eglot-go-mode-save)
 
 ;; better terminal emulator
 (use-package vterm
