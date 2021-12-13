@@ -33,7 +33,7 @@
 ;; add window padding left and right
 (set-fringe-mode 0)
 
-;; set font
+;; set font - this causes issues with daemon mode
 (set-frame-font "JetBrains Mono 12" nil t)
 
 ;; y/n for  answering yes/no questions
