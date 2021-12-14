@@ -303,6 +303,11 @@
   (company-minimum-prefix-length 2)
   (company-idle-delay 0))
 
+;; disable selecting item from company list with RETURN
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "<return>") nil)
+  (define-key company-active-map (kbd "RET") nil))
+
 (use-package meow)
 ;; use custom meow package until you are done writing tutorial
 ;; (add-to-list 'load-path "/home/skmd/Code/meow")
