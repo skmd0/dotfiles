@@ -430,6 +430,7 @@ folder, otherwise delete a word"
 (global-set-key (kbd "M-l") 'recenter)
 (global-set-key (kbd "M-e") 'consult-flymake)
 (global-set-key (kbd "M-p") 'projectile-find-file)
+(global-set-key (kbd "M-o") 'other-window)
 
 ;; overriding default keybinds
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
