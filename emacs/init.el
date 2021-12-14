@@ -298,6 +298,9 @@
   :hook (prog-mode . company-mode)
   :bind
   (:map company-active-map ("<tab>" . company-complete-selection))
+  (:map company-active-map ("M-l" . company-complete-selection))
+  (:map company-active-map ("M-j" . company-select-next))
+  (:map company-active-map ("M-k" . company-select-previous))
   ;; (:map eglot-mode-map ("<tab>" . company-indent-or-complete-common))
   :custom
   (company-minimum-prefix-length 2)
