@@ -218,9 +218,26 @@
 
 (use-package avy)
 
+(defun skmd/minibuffer-backward-kill (arg)
+  "When minibuffer is completing a file name delete up to parent
+folder, otherwise delete a word"
+  (interactive "p")
+  (if minibuffer-completing-file-name
+      ;; Borrowed from https://github.com/raxod502/selectrum/issues/498#issuecomment-803283608
+      (if (string-match-p "/." (minibuffer-contents))
+          (zap-up-to-char (- arg) ?/)
+        (delete-minibuffer-contents))
+      (backward-kill-word arg)))
+
 ;; minibuffer menu (alternative to ivy)
 (use-package vertico
- :init
+  :bind (:map vertico-map
+			  ("M-l" . vertico-insert)
+			  ("M-j" . vertico-next)
+			  ("M-k" . vertico-previous)
+			  :map minibuffer-local-map
+			  ("M-h" . skmd/minibuffer-backward-kill))
+  :init
   (vertico-mode))
 
 ;; packing for better result filtering in minibuffer
