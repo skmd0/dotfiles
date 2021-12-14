@@ -212,9 +212,8 @@
 ;;   :commands (dired-sidebar-toggle-sidebar))
 
 ;; Enable undo-tree, sane undo/redo behavior
-(use-package undo-tree
-  :init (global-undo-tree-mode))
-;; (setq undo-tree-enable-undo-in-region t)
+;; (use-package undo-tree
+;;   :init (global-undo-tree-mode))
 
 (use-package avy)
 
