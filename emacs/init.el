@@ -300,7 +300,7 @@
   (:map company-active-map ("<tab>" . company-complete-selection))
   ;; (:map eglot-mode-map ("<tab>" . company-indent-or-complete-common))
   :custom
-  (company-minimum-prefix-length 1)
+  (company-minimum-prefix-length 2)
   (company-idle-delay 0))
 
 (use-package meow)
