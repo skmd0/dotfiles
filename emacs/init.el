@@ -212,8 +212,8 @@
 ;;   :commands (dired-sidebar-toggle-sidebar))
 
 ;; Enable undo-tree, sane undo/redo behavior
-;; (use-package undo-tree
-;;   :init (global-undo-tree-mode))
+(use-package undo-tree
+  :init (global-undo-tree-mode))
 
 (use-package avy)
 
@@ -403,8 +403,8 @@ folder, otherwise delete a word"
    '("R" . meow-swap-grab)
    '("s" . meow-kill)
    '("t" . avy-goto-char-2)
-   '("u" . meow-undo)
-   '("U" . meow-undo-in-selection)
+   '("u" . undo-tree-undo)
+   '("U" . undo-tree-redo)
    '("v" . meow-visit)
    '("w" . meow-mark-word)
    '("W" . meow-mark-symbol)
