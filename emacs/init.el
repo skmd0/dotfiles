@@ -408,19 +408,21 @@
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "M-l") 'recenter)
 (global-set-key (kbd "M-e") 'consult-flymake)
+(global-set-key (kbd "M-p") 'projectile-find-file)
+
+;; overriding default keybinds
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 ;; control key custom keybinds
 (global-set-key (kbd "C-c C-t") 'vterm-other-window)
 (global-set-key (kbd "C-c C-f") 'consult-line)
 (global-set-key (kbd "C-c C-S-f") 'consult-ripgrep)
 (global-set-key (kbd "C-c C-n") 'org-roam-node-find)
+;; I am not sure if this actually works
 (global-set-key (kbd "C-c C-S-O") 'consult-recent-file)
-(global-set-key (kbd "C-c C-q") 'save-buffers-kill-terminal)
-(global-set-key (kbd "C-c C-S-p") 'projectile-switch-project)
-(global-set-key (kbd "C-c C-p") 'projectile-find-file)
+(global-set-key (kbd "C-c C-p") 'projectile-switch-project)
 (global-set-key (kbd "C-c C-d") 'dired-jump)
 (global-set-key (kbd "C-c C-s") 'yas-insert-snipet)
-(global-set-key (kbd "C-c C-b") 'switch-to-buffer)
 (global-set-key (kbd "C-c M-o C-n") 'bookmark-set)
 (global-set-key (kbd "C-c M-o C-o") 'consult-bookmark)
 (global-set-key (kbd "C-c M-o C-l") 'bookmark-bmenu-list)
