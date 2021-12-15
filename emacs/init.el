@@ -296,12 +296,7 @@ folder, otherwise delete a word"
   (consult-project-root-function #'skmd/get-project-root)
   (completion-in-region-function #'consult-completion-in-region))
 
-;; 	"lr" '(lsp-find-references :which-key "LSP find references")
-;; 	"ld" '(lsp-find-definition :which-key "LSP find definition")
-;; 	"lc" '(lsp-rename :which-key "LSP rename")
 ;; 	"lt" '(dired-sidebar-toggle-sidebar :which-key "toggle project sidebar")
-;; 	"ll" '(lsp-ivy-workspace-symbol :which-key "LSP ivy jump to symbol by name")
-;; 	"lf" '(lsp-ui-sideline-apply-code-actions :which-key "LSP apply code action")
 ;; 	"sn" '(yas-new-snippet :which-key "create a new snippet")
 ;; 	"mn" '(bookmark-set :which-key "set a bookmark")
 ;; 	"mm" '(counsel-bookmark :which-key "open a bookmark")
