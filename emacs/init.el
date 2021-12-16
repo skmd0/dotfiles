@@ -414,9 +414,6 @@ folder, otherwise delete a word"
 (meow-global-mode 1)
 (setq meow-use-clipboard t)
 
-;; disable org mode C-c keybinds
-(eval-after-load "org" '(define-key org-mode-map (kbd "C-c") nil))
-
 ;; custom function to scroll up by 2 lines
 (defun skmd/scroll-up-by-2 ()
   (interactive)
@@ -460,6 +457,11 @@ folder, otherwise delete a word"
 (global-set-key (kbd "C-c M-o C-n") 'bookmark-set)
 (global-set-key (kbd "C-c M-o C-o") 'consult-bookmark)
 (global-set-key (kbd "C-c M-o C-l") 'bookmark-bmenu-list)
+
+;; unmap C-c keybinds for specific major-modes
+(add-hook 'org-mode-hook (lambda() (local-unset-key (kbd "C-c"))))
+(add-hook 'python-mode-hook (lambda() (local-unset-key (kbd "C-c"))))
+(add-hook 'go-mode-hook (lambda() (local-unset-key (kbd "C-c"))))
 
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
