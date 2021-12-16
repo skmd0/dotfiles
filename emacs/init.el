@@ -436,13 +436,11 @@ folder, otherwise delete a word"
 (global-set-key (kbd "M-e") 'consult-flymake)
 (global-set-key (kbd "M-p") 'projectile-find-file)
 (global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "M-q") 'kill-this-buffer)
 ;; emacs' native start of line is M-m so this goes well together
 ;; the reason for using these commands is as a shorthand for
 ;; meow's mg and xg keys
 (global-set-key (kbd "M-n") 'end-of-line)
-
-;; overriding default keybinds
-(global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 ;; control key custom keybinds
 (global-set-key (kbd "C-c C-t") 'vterm-other-window)
