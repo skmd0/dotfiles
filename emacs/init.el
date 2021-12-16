@@ -417,9 +417,22 @@ folder, otherwise delete a word"
 ;; disable org mode C-c keybinds
 (eval-after-load "org" '(define-key org-mode-map (kbd "C-c") nil))
 
+;; custom function to scroll up by 2 lines
+(defun skmd/scroll-up-by-2 ()
+  (interactive)
+  (scroll-up 2))
+
+;; custom function to scroll down by 2 lines
+(defun skmd/scroll-down-by-2 ()
+  (interactive)
+  (scroll-down 2))
+
 ;; meta key custom keybinds
-(global-set-key (kbd "M-j") 'scroll-up-line)
-(global-set-key (kbd "M-k") 'scroll-down-line)
+;; (global-set-key (kbd "M-j") 'scroll-up-line)
+(global-set-key (kbd "M-j") 'skmd/scroll-up-by-2)
+;; (global-set-key (kbd "M-k") 'scroll-down-line)
+(global-set-key (kbd "M-k") 'skmd/scroll-down-by-2)
+
 (global-set-key (kbd "M-;") 'meow-M-x)
 (global-set-key (kbd "M-/") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "M-l") 'recenter)
