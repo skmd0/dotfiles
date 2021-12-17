@@ -1,6 +1,6 @@
 [user]
 	email = domen@skamlic.com
-	name = domen@skamlic.com
+	name = "Domen Skamlic"
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
