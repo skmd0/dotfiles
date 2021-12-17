@@ -412,6 +412,8 @@ folder, otherwise delete a word"
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
    '("'" . repeat)
+   '("{" . backward-paragraph)
+   '("}" . forward-paragraph)
    ))
 (meow-setup)
 (meow-global-mode 1)
