@@ -39,6 +39,9 @@
 ;; y/n for  answering yes/no questions
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; don't warn for following symlinked files
+(setq vc-follow-symlinks t)
+
 ;; remember the position of your cursor in a file
 (save-place-mode 1)
 
