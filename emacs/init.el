@@ -443,18 +443,18 @@ folder, otherwise delete a word"
 (global-set-key (kbd "M-n") 'end-of-line)
 
 ;; control key custom keybinds
-(global-set-key (kbd "C-c C-t") 'vterm-other-window)
-(global-set-key (kbd "C-c C-f") 'consult-line)
-(global-set-key (kbd "C-c C-S-f") 'consult-ripgrep)
-(global-set-key (kbd "C-c C-n") 'org-roam-node-find)
+(global-set-key (kbd "C-c t") 'vterm-other-window)
+(global-set-key (kbd "C-c f") 'consult-line)
+(global-set-key (kbd "C-c S-f") 'consult-ripgrep)
+(global-set-key (kbd "C-c n") 'org-roam-node-find)
 ;; I am not sure if this actually works
-(global-set-key (kbd "C-c C-S-O") 'consult-recent-file)
-(global-set-key (kbd "C-c C-p") 'projectile-switch-project)
-(global-set-key (kbd "C-c C-d") 'dired-jump)
-(global-set-key (kbd "C-c C-s") 'yas-insert-snipet)
-(global-set-key (kbd "C-c M-o C-n") 'bookmark-set)
-(global-set-key (kbd "C-c M-o C-o") 'consult-bookmark)
-(global-set-key (kbd "C-c M-o C-l") 'bookmark-bmenu-list)
+(global-set-key (kbd "C-c S-O") 'consult-recent-file)
+(global-set-key (kbd "C-c p") 'projectile-switch-project)
+(global-set-key (kbd "C-c d") 'dired-jump)
+(global-set-key (kbd "C-c s") 'yas-insert-snipet)
+(global-set-key (kbd "C-c b C-n") 'bookmark-set)
+(global-set-key (kbd "C-c b C-o") 'consult-bookmark)
+(global-set-key (kbd "C-c b C-l") 'bookmark-bmenu-list)
 
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
