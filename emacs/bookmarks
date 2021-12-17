@@ -1,0 +1,15 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("shell command test"
+ (filename . "~/Code/org-roam/20211126042828-run_a_shell_command_as_a_different_user.org")
+ (front-context-string . "\n* Solution\n  su")
+ (rear-context-string . " are bob user).\n")
+ (position . 235))
+("testing something out"
+ (filename . "~/Code/dotfiles/emacs/init.el")
+ (front-context-string . "\n;; control key ")
+ (rear-context-string . ") 'end-of-line)\n")
+ (position . 13651))
+)
