@@ -437,6 +437,7 @@ folder, otherwise delete a word"
 (global-set-key (kbd "M-p") 'projectile-find-file)
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "M-q") 'kill-this-buffer)
+(global-set-key (kbd "M-b") 'consult-bookmark)
 ;; emacs' native start of line is M-m so this goes well together
 ;; the reason for using these commands is as a shorthand for
 ;; meow's mg and xg keys
@@ -452,9 +453,6 @@ folder, otherwise delete a word"
 (global-set-key (kbd "C-c p") 'projectile-switch-project)
 (global-set-key (kbd "C-c d") 'dired-jump)
 (global-set-key (kbd "C-c s") 'yas-insert-snipet)
-(global-set-key (kbd "C-c b C-n") 'bookmark-set)
-(global-set-key (kbd "C-c b C-o") 'consult-bookmark)
-(global-set-key (kbd "C-c b C-l") 'bookmark-bmenu-list)
 
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
