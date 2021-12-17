@@ -70,7 +70,7 @@
 ;; Emacs pls don't shit auto-generated stuff in my init.el
 ;;(setq custom-file (concat user-emacs-directory "custom.el"))
 ;; hard-coded for now
-(setq custom-file "/home/skmd/.emacs.d/custom.el")
+(setq custom-file "/home/skmd/.config/emacs/custom.el")
 (load custom-file)
 
 ;; initialize package sources
