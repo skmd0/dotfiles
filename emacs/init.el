@@ -445,6 +445,8 @@ folder, otherwise delete a word"
 ;; the reason for using these commands is as a shorthand for
 ;; meow's mg and xg keys
 (global-set-key (kbd "M-n") 'end-of-line)
+(global-set-key (kbd "M-r") 'consult-register-store)
+(global-set-key (kbd "M-t") 'consult-register-load)
 
 ;; control key custom keybinds
 (global-set-key (kbd "C-c t") 'vterm-other-window)
