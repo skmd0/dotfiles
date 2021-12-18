@@ -449,11 +449,11 @@ folder, otherwise delete a word"
 (global-set-key (kbd "M-n") 'end-of-line)
 (global-set-key (kbd "M-r") 'consult-register-store)
 (global-set-key (kbd "M-t") 'consult-register-load)
+(global-set-key (kbd "M-f") 'consult-line)
 
 ;; control key custom keybinds
 (global-set-key (kbd "C-c t") 'vterm-other-window)
-(global-set-key (kbd "C-c f") 'consult-line)
-(global-set-key (kbd "C-c S-f") 'consult-ripgrep)
+(global-set-key (kbd "C-c f") 'consult-ripgrep)
 (global-set-key (kbd "C-c n") 'org-roam-node-find)
 ;; I am not sure if this actually works
 (global-set-key (kbd "C-c S-O") 'consult-recent-file)
