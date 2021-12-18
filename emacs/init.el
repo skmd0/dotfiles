@@ -453,7 +453,7 @@ folder, otherwise delete a word"
 
 ;; control key custom keybinds
 (global-set-key (kbd "C-c t") 'vterm-other-window)
-(global-set-key (kbd "C-c f") 'consult-ripgrep)
+(global-set-key (kbd "C-c g") 'consult-ripgrep)
 (global-set-key (kbd "C-c n") 'org-roam-node-find)
 ;; I am not sure if this actually works
 (global-set-key (kbd "C-c S-O") 'consult-recent-file)
