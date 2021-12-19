@@ -299,14 +299,6 @@ folder, otherwise delete a word"
   (consult-project-root-function #'skmd/get-project-root)
   (completion-in-region-function #'consult-completion-in-region))
 
-;; 	"lt" '(dired-sidebar-toggle-sidebar :which-key "toggle project sidebar")
-;; 	"sn" '(yas-new-snippet :which-key "create a new snippet")
-;; 	"mn" '(bookmark-set :which-key "set a bookmark")
-;; 	"mm" '(counsel-bookmark :which-key "open a bookmark")
-;; 	"md" '(bookmark-delete :which-key "delete a bookmark")
-;; 	"ml" '(bookmark-bmenu-list :which-key "list all bookmarks")
-;;  "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
-
 ;; auto-completion while you type
 (use-package company
   :hook (prog-mode . company-mode)
@@ -461,6 +453,14 @@ folder, otherwise delete a word"
 (global-set-key (kbd "C-c d") 'dired-jump)
 (global-set-key (kbd "C-c s") 'yas-insert-snipet)
 (global-set-key (kbd "C-c b") 'consult-bookmark)
+
+;; 	"lt" '(dired-sidebar-toggle-sidebar :which-key "toggle project sidebar")
+;; 	"sn" '(yas-new-snippet :which-key "create a new snippet")
+;; 	"mn" '(bookmark-set :which-key "set a bookmark")
+;; 	"mm" '(counsel-bookmark :which-key "open a bookmark")
+;; 	"md" '(bookmark-delete :which-key "delete a bookmark")
+;; 	"ml" '(bookmark-bmenu-list :which-key "list all bookmarks")
+;;  "ps" '(counsel-projectile-rg :which-key "search in the project - counsel+projectile+ripgrep")
 
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
