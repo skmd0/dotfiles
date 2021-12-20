@@ -304,7 +304,7 @@ folder, otherwise delete a word"
 
 ;; auto-completion while you type
 (use-package company
-  :hook (prog-mode . company-mode)
+  :after eglot
   :bind
   (:map company-active-map ("<tab>" . company-complete-selection))
   (:map company-active-map ("M-l" . company-complete-selection))
