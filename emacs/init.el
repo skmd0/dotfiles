@@ -36,10 +36,10 @@
 ;; set font - this causes issues with daemon mode
 (set-frame-font "JetBrains Mono 12" nil t)
 
-;; y/n for  answering yes/no questions
+;; y/n for answering yes/no questions
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; don't warn for following symlinked files
+;; don't show warning for opening symlinked files
 (setq vc-follow-symlinks t)
 
 ;; turn on recent files
