@@ -214,8 +214,9 @@
   ;; (evil-collection-define-key 'normal 'dired-mode-map
   ;; 	"H" 'dired-hide-dotfiles-mode))
 
-;; (use-package dired-sidebar
-;;   :commands (dired-sidebar-toggle-sidebar))
+;; package to show project tree in left sidebar
+(use-package dired-sidebar
+  :commands (dired-sidebar-toggle-sidebar))
 
 ;; Enable undo-tree, sane undo/redo behavior
 (use-package undo-tree
