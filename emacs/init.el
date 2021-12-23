@@ -322,7 +322,6 @@ folder, otherwise delete a word"
   (define-key company-active-map (kbd "RET") nil))
 
 (use-package meow)
-;; use custom meow package until you are done writing tutorial
 ;; (add-to-list 'load-path "/home/skmd/Code/meow")
 ;; (load "meow")
 (defun meow-setup ()
