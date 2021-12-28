@@ -172,6 +172,7 @@
 (use-package smartparens
   :hook (prog-mode . smartparens-mode))
 
+;; package for LSP support
 (use-package eglot)
 
 ;; Go programming language intergration
