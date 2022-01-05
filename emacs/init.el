@@ -51,6 +51,10 @@
 ;; reopen files from previous session
 ;;(desktop-save-mode 1)
 
+;; replace selected text when you type new text
+;; default behaviour is to just insert text after the cursor
+;;(delete-selection mode 1)
+
 ;; default emacs behaviour is to put backup and auto-save files
 ;; in the same directory as original file.
 ;; put backup files (~) in specific directory
