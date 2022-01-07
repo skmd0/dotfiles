@@ -450,6 +450,8 @@ folder, otherwise delete a word"
 (global-set-key (kbd "M-r") 'consult-register-store)
 (global-set-key (kbd "M-t") 'consult-register-load)
 (global-set-key (kbd "M-f") 'consult-line)
+(global-set-key (kbd "M-+") 'text-scale-increase)
+(global-set-key (kbd "M--") 'text-scale-decrease)
 
 ;; control key custom keybinds
 (global-set-key (kbd "C-c t") 'vterm-other-window)
