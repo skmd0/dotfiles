@@ -403,7 +403,7 @@ folder, otherwise delete a word"
    '("t" . avy-goto-char-2)
    '("u" . undo-tree-undo)
    '("U" . undo-tree-redo)
-   '("v" . meow-visit)
+   '("v" . consult-line)
    '("w" . meow-mark-word)
    '("W" . meow-mark-symbol)
    '("x" . meow-line)
