@@ -456,10 +456,10 @@ folder, otherwise delete a word"
 
 ;; control key custom keybinds
 (global-set-key (kbd "C-c t") 'vterm-other-window)
-(global-set-key (kbd "C-c g") 'consult-ripgrep)
 (global-set-key (kbd "C-c n") 'org-roam-node-find)
-;; I am not sure if this actually works
-(global-set-key (kbd "C-c f") 'consult-recent-file)
+(global-set-key (kbd "C-c g") 'consult-ripgrep)
+(global-set-key (kbd "C-c f") 'consult-find)
+(global-set-key (kbd "C-c r") 'consult-recent-file)
 (global-set-key (kbd "C-c p") 'projectile-switch-project)
 (global-set-key (kbd "C-c d") 'dired-jump)
 (global-set-key (kbd "C-c s") 'yas-insert-snipet)
