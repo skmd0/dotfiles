@@ -395,6 +395,7 @@ folder, otherwise delete a word"
    '("o" . meow-block)
    '("O" . meow-to-block)
    '("p" . meow-yank)
+   '("P" . consult-yank-from-kill-ring)
    '("q" . mode-line-other-buffer)
    '("Q" . pop-global-mark)
    '("r" . meow-replace)
