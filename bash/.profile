@@ -6,5 +6,5 @@
 
 export EDITOR="emacs"
 export GOPATH="/home/skmd/.local/share/go"
-export PATH=$PATH:$USERPATH:$GOPATH/bin
+export PATH=$PATH:/home/skmd/.local/bin:$GOPATH/bin
 
