@@ -68,6 +68,10 @@
 ;; display line numbers
 (global-display-line-numbers-mode t)
 
+;; replace dabbrev keybinds with hippie-expand
+;; hippie-expand is just newer and better version of dabbrev
+(global-set-key [remap dabbrev-expand] 'hippie-expand)
+
 ;; disable line numbers for some modes
 (dolist (mode '(term-mode-hook
 				vterm-mode-hook
@@ -453,6 +457,7 @@ folder, otherwise delete a word"
 (global-set-key (kbd "M-f") 'consult-line)
 (global-set-key (kbd "M-+") 'text-scale-increase)
 (global-set-key (kbd "M--") 'text-scale-decrease)
+(global-set-key (kbd "M-h") 'hippie-expand)
 
 ;; control key custom keybinds
 (global-set-key (kbd "C-c t") 'vterm-other-window)
