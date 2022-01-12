@@ -330,6 +330,15 @@ folder, otherwise delete a word"
   (define-key company-active-map (kbd "<return>") nil)
   (define-key company-active-map (kbd "RET") nil))
 
+;; custom function to edit current file as sudo
+(defun sudo ()
+  "Use TRAMP to edit current file as sudo"
+  (interactive)
+  (when buffer-file-name
+	(find-alternative-file
+	 (concat "/sudo:root@localhost:"
+			 buffer-file-name))))
+
 ;; custom function for smarter C-DEL
 (defun skmd/backward-kill-word ()
   "Remove all whitespace if the character behind the cursor is whitespace, otherwise remove a word."
