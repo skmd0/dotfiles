@@ -330,6 +330,19 @@ folder, otherwise delete a word"
   (define-key company-active-map (kbd "<return>") nil)
   (define-key company-active-map (kbd "RET") nil))
 
+;; custom function for smarter C-DEL
+(defun skmd/backward-kill-word ()
+  "Remove all whitespace if the character behind the cursor is whitespace, otherwise remove a word."
+  (interactive)
+  (if (looking-back "[ \n]")
+      ;; delete horizontal space before us and then check to see if we
+      ;; are looking at a newline
+      (progn (delete-horizontal-space 't)
+             (while (looking-back "[ \n]")
+               (backward-delete-char 1)))
+    ;; otherwise, just do the normal kill word.
+    (backward-kill-word 1)))
+
 (use-package meow)
 ;; (add-to-list 'load-path "/home/skmd/Code/meow")
 ;; (load "meow")
@@ -469,6 +482,7 @@ folder, otherwise delete a word"
 (global-set-key (kbd "C-c d") 'dired-jump)
 (global-set-key (kbd "C-c s") 'yas-insert-snipet)
 (global-set-key (kbd "C-c b") 'consult-bookmark)
+(global-set-key (kbd "M-DEL") 'skmd/backward-kill-word)
 
 ;; change the garbage collection back to normal after everything gets loaded
 (setq gc-cons-threshold (* 2 1000 1000))
