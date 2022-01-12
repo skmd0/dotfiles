@@ -335,7 +335,7 @@ folder, otherwise delete a word"
   "Use TRAMP to edit current file as sudo"
   (interactive)
   (when buffer-file-name
-	(find-alternative-file
+	(find-alternate-file
 	 (concat "/sudo:root@localhost:"
 			 buffer-file-name))))
 
